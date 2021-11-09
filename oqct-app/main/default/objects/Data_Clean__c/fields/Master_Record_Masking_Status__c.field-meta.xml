@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Master_Record_Masking_Status__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The masking status of the Master object’s record corresponding to the Data clean record. This does not include the masking status of the related child records. The picklist takes its values from the Global Picklist ‘Data Clean Treatment Status’</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The masking status of the Master object’s record corresponding to the Data clean record. This does not include the masking status of the related child records. The picklist takes its values from the Global Picklist ‘Data Clean Treatment Status’</inlineHelpText>
+    <label>Master Record Masking Status</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Data_Clean_Status</valueSetName>
+    </valueSet>
+</CustomField>

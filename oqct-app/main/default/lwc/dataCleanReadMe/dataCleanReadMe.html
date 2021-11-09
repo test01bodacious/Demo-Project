@@ -1,0 +1,56 @@
+<!--
+  @description       : NA
+  @author            : Krrish Joy
+  @group             : OQCT Limited
+  @last modified on  : 2021-02-18
+  @last modified by  : Krrish Joy
+  Modifications Log 
+  Ver   Date         Author         Modification
+  1.0   2020-11-10   Krrish Joy   Initial Version
+-->
+<template>
+    <lightning-accordion
+        allow-multiple-sections-open
+        active-section-name={activeSections}
+    >
+        <lightning-accordion-section name="aboutApp" label="About App">
+            Data Clean lets to comply with your Data Privacy (GDPR, CCPA, etc)
+            by masking/archiving/deleting customer data that you don't need.<br />
+            The app is fully customizable to control the objects and fields that
+            need to be masked. It provides detailed reports and notifies user at
+            the end of the each process.
+        </lightning-accordion-section>
+
+        <lightning-accordion-section name="warnings" label="Warnings!">
+            <p style="color: red">
+                Data Clean App is very Powerful app, before using this app you
+                must read all the user guide and went through initial training!
+                We also advice you test all the configuration on the Sandbox and
+                then configure it on Production Environment!<br /><br />
+                <b
+                    >OQCT / Data Clean app does not take any responsiblity fo
+                    your Data lost!</b
+                >
+            </p>
+        </lightning-accordion-section>
+
+        <lightning-accordion-section name="aboutOqct" label="About OQCT">
+            OQCT is a Software Solution Development company based in the UK
+            focusing on customisation and extension of Salesforce. The OQCT team
+            have a background of working on large multinational CRM systems.
+            <br />
+            Since 2018 OQCT has helped solve the data problems of large
+            enterprises, Fortune 500 companies and small businesses across the
+            UK. <br />
+            Our complete focus is ensuring our customers' continued success with
+            our products and, by extension, their CRM and marketing automation
+            initiatives. <br />
+            <br />
+            In case of any inquery, you could reach OQCT support (
+            <lightning-formatted-email
+                value="support@oqct.com"
+            ></lightning-formatted-email
+            >)
+        </lightning-accordion-section>
+    </lightning-accordion>
+</template>

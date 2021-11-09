@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Data_Clean_Parent_Backup_File_Names__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The name of the backup files generated during the process (Parent Only)</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The name of the backup files generated during the process (Parent Only)</inlineHelpText>
+    <label>Data Clean Parent Backup File Names</label>
+    <length>131072</length>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>5</visibleLines>
+</CustomField>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Master_Id__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The id which is matched to a field for the Master object. This will be uploaded from the File or Inserted Directly under Data Clean Object that will trigger the entire process</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The id which is matched to a field for the Master object. This will be uploaded from the File or Inserted Directly under Data Clean Object that will trigger the entire process</inlineHelpText>
+    <label>Master Id</label>
+    <length>255</length>
+    <required>true</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Day(s)</fullName>
+        <default>true</default>
+        <label>Day(s)</label>
+    </customValue>
+    <customValue>
+        <fullName>Minute(s)</fullName>
+        <default>false</default>
+        <label>Minute(s)</label>
+    </customValue>
+    <customValue>
+        <fullName>Hour(s)</fullName>
+        <default>false</default>
+        <label>Hour(s)</label>
+    </customValue>
+    <customValue>
+        <fullName>Month(s)</fullName>
+        <default>false</default>
+        <label>Month(s)</label>
+    </customValue>
+    <customValue>
+        <fullName>Year(s)</fullName>
+        <default>false</default>
+        <label>Year(s)</label>
+    </customValue>
+    <description>The time units used for scheduling jobs</description>
+    <masterLabel>Data Clean Time Units</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

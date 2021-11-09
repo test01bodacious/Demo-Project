@@ -1,0 +1,58 @@
+<!--
+  @description       : NA
+  @author            : Krrish Joy
+  @group             : OQCT Limited
+  @last modified on  : 2021-02-18
+  @last modified by  : Krrish Joy
+  Modifications Log 
+  Ver   Date         Author         Modification
+  1.0   2020-12-22   Krrish Joy   Initial Version
+-->
+<template>
+    <div class="slds-trial-header slds-grid">
+        <lightning-layout vertical-align="center">
+            <lightning-layout-item>
+                <span> Next Data Clean Job Run Time </span>
+            </lightning-layout-item>
+            <lightning-layout-item
+                class="slds-m-left_small slds-m-bottom_xx-small"
+            >
+                <lightning-button-icon
+                    icon-name="utility:right"
+                    alternative-text="Data Clean Configuration"
+                    variant="bare-inverse"
+                    title="Data Clean Configuration"
+                ></lightning-button-icon
+                >&nbsp;&nbsp;
+            </lightning-layout-item>
+            <lightning-layout-item>
+                <c-data-clean-navigation
+                    label={nextJobName}
+                    title={nextJobName}
+                    type="standard__navItemPage"
+                    api-name="OQCT_DaCl__DC_Job_Status"
+                ></c-data-clean-navigation>
+            </lightning-layout-item>
+        </lightning-layout>
+        <div
+            class="slds-grid slds-grid_vertical-align-center slds-col_bump-left"
+        >
+            <span class="slds-box slds-box_xx-small slds-theme_default"
+                >{nextDataCleanJobCountDown.days}</span
+            >
+            <span class="slds-m-horizontal_x-small">Days</span>
+            <span class="slds-box slds-box_xx-small slds-theme_default"
+                >{nextDataCleanJobCountDown.hours}</span
+            >
+            <span class="slds-m-horizontal_x-small">Hours</span>
+            <span class="slds-box slds-box_xx-small slds-theme_default"
+                >{nextDataCleanJobCountDown.minutes}</span
+            >
+            <span class="slds-m-horizontal_x-small">Minutes</span>
+            <span class="slds-box slds-box_xx-small slds-theme_default"
+                >{nextDataCleanJobCountDown.seconds}</span
+            >
+            <span class="slds-m-horizontal_x-small">Seconds</span>
+        </div>
+    </div>
+</template>

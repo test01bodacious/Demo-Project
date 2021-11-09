@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Alphabets (Lower Case Letters Only)</fullName>
+        <default>false</default>
+        <label>Alphabets (Lower Case Letters Only)</label>
+    </customValue>
+    <customValue>
+        <fullName>Alphabets (Upper Case Letters Only)</fullName>
+        <default>false</default>
+        <label>Alphabets (Upper Case Letters Only)</label>
+    </customValue>
+    <customValue>
+        <fullName>Alphabets (Lower Case and Upper Case Letters Mix)</fullName>
+        <default>false</default>
+        <label>Alphabets (Lower Case and Upper Case Letters Mix)</label>
+    </customValue>
+    <customValue>
+        <fullName>Alphanumeric (Numbers and Lower Case Letters Only)</fullName>
+        <default>false</default>
+        <label>Alphanumeric (Numbers and Lower Case Letters Only)</label>
+    </customValue>
+    <customValue>
+        <fullName>Alphanumeric (Numbers and Upper Case Letters Only)</fullName>
+        <default>false</default>
+        <label>Alphanumeric (Numbers and Upper Case Letters Only)</label>
+    </customValue>
+    <customValue>
+        <fullName>Alphanumeric (Numbers, Lower Case and Upper Case Letters Mix)</fullName>
+        <default>false</default>
+        <label>Alphanumeric (Numbers, Lower Case and Upper Case Letters Mix)</label>
+    </customValue>
+    <customValue>
+        <fullName>AlphanumericWithSpecialCharacters (Special Characters, Numbers, Lower Case and Upper Case Letters Mix)</fullName>
+        <default>false</default>
+        <label>AlphanumericWithSpecialCharacters (Special Characters, Numbers, Lower Case and Upper Case Letters Mix)</label>
+    </customValue>
+    <description>Masking pattern options for Text Data Type in Data Clean App</description>
+    <masterLabel>Data Clean Data Type (Text) Mask Options</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

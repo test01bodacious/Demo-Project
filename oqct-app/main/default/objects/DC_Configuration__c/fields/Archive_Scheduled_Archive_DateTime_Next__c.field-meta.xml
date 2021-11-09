@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Archive_Scheduled_Archive_DateTime_Next__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The date-time on which the Archival process is scheduled for next run. Available in any Action that involves archiving</description>
+    <externalId>false</externalId>
+    <formula>IF(
+    CONTAINS(TEXT(Data_Clean_Action__c), &apos;Archive&apos;),
+    Process_Scheduled_Date_Time_Next__c,
+    null
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>The date-time on which the Archival process is scheduled for next run. Available in any Action that involves archiving</inlineHelpText>
+    <label>Archive-Scheduled Archive DateTime(Next)</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>DateTime</type>
+</CustomField>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Value_Type__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Date Type to be used for date and date time data type while masking</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Date Type to be used for date and date time data type while masking</inlineHelpText>
+    <label>Value Type</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Random Date</fullName>
+                <default>false</default>
+                <label>Random Date</label>
+            </value>
+            <value>
+                <fullName>Random Future Date</fullName>
+                <default>false</default>
+                <label>Random Future Date</label>
+            </value>
+            <value>
+                <fullName>Random Past Date</fullName>
+                <default>false</default>
+                <label>Random Past Date</label>
+            </value>
+            <value>
+                <fullName>Random DateTime</fullName>
+                <default>false</default>
+                <label>Random DateTime</label>
+            </value>
+            <value>
+                <fullName>Random Future DateTime</fullName>
+                <default>false</default>
+                <label>Random Future DateTime</label>
+            </value>
+            <value>
+                <fullName>Random Past DateTime</fullName>
+                <default>false</default>
+                <label>Random Past DateTime</label>
+            </value>
+            <value>
+                <fullName>Random Time</fullName>
+                <default>false</default>
+                <label>Random Time</label>
+            </value>
+            <value>
+                <fullName>Random Location (Latitude)</fullName>
+                <default>false</default>
+                <label>Random Location (Latitude)</label>
+            </value>
+            <value>
+                <fullName>Random Location (Longitude)</fullName>
+                <default>false</default>
+                <label>Random Location (Longitude)</label>
+            </value>
+            <value>
+                <fullName>Random Text</fullName>
+                <default>false</default>
+                <label>Random Text</label>
+            </value>
+            <value>
+                <fullName>Random Currency</fullName>
+                <default>false</default>
+                <label>Random Currency</label>
+            </value>
+            <value>
+                <fullName>Random Percentage</fullName>
+                <default>false</default>
+                <label>Random Percentage</label>
+            </value>
+            <value>
+                <fullName>Random Number</fullName>
+                <default>false</default>
+                <label>Random Number</label>
+            </value>
+            <value>
+                <fullName>Random Email</fullName>
+                <default>false</default>
+                <label>Random Email</label>
+            </value>
+            <value>
+                <fullName>Random URL</fullName>
+                <default>false</default>
+                <label>Random URL</label>
+            </value>
+            <value>
+                <fullName>Random Phone</fullName>
+                <default>false</default>
+                <label>Random Phone</label>
+            </value>
+            <value>
+                <fullName>Random Boolean</fullName>
+                <default>false</default>
+                <label>Random Boolean</label>
+            </value>
+            <value>
+                <fullName>Random Value Available in Picklist Value Set</fullName>
+                <default>false</default>
+                <label>Random Value Available in Picklist Value Set</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

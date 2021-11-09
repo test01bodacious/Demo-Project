@@ -1,0 +1,9 @@
+.searchable-dual-list-box-container {
+    width: 560px;
+    margin: 0 auto;
+}
+
+.input-search {
+    max-width: 240px;
+    margin-bottom: 5px;
+}

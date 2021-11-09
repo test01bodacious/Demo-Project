@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Deletion_Completed_1_or_0__c</fullName>
+    <deprecated>false</deprecated>
+    <description>0 if the deletion process for parent record and related child records is ongoing; 1, if it is completed</description>
+    <externalId>false</externalId>
+    <formula>IF(Is_Deletion_Completed__c,1,0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>0 if the deletion process for parent record and related child records is ongoing; 1, if it is completed</inlineHelpText>
+    <label>Is Deletion Completed (1 or 0)</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

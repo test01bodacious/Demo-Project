@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Job_Schedule_Date__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The Date-Time on which the job is/was scheduled</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The Date-Time on which the job is/was scheduled</inlineHelpText>
+    <label>Job Schedule Date</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>DateTime</type>
+</CustomField>

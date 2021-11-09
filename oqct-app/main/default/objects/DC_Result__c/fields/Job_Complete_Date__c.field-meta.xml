@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Job_Complete_Date__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The Date Time on which the job was completed</description>
+    <externalId>false</externalId>
+    <formula>IF(ISPICKVAL(Job_Status__c,&apos;Completed&apos;), LastModifiedDate, null)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>The Date Time on which the job was completed</inlineHelpText>
+    <label>Job Complete Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>DateTime</type>
+</CustomField>

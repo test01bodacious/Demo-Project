@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Related_Deletion_Status__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The deletion status of the child object’s  records only (does not include the deletion status for the parent object) The picklist takes its values from the Global Picklist ‘Data Clean Treatment Status’</description>
+    <externalId>false</externalId>
+    <formula>IF(
+    !CONTAINS(TEXT(Data_Clean_Action__c), &apos;Deletion&apos;),
+    &apos;Not Eligible&apos;,
+    IF(
+        !(Total_Child_Job_Not_Completed_Deletion__c = 0),
+        &apos;Pending&apos;,
+        IF(
+            AND(Total_Related_Success_Deletion__c &gt; 0, Total_Related_Failure_Deletion__c = 0),
+            &apos;Success&apos;,
+            IF(
+                AND(Total_Related_Success_Deletion__c = 0, Total_Related_Failure_Deletion__c &gt; 0),
+                &apos;Failed&apos;,
+                IF(
+                    AND(Total_Related_Success_Deletion__c &gt; 0, Total_Related_Failure_Deletion__c &gt; 0),
+                    &apos;Partial Success&apos;,
+                    IF(
+                        AND(Total_Related_Success_Deletion__c = 0, Total_Related_Failure_Deletion__c = 0),
+                        &apos;No Records Found&apos;,
+                        null
+                    )
+                )
+            )
+        )
+    )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>The deletion status of the child object’s  records only (does not include the deletion status for the parent object) The picklist takes its values from the Global Picklist ‘Data Clean Treatment Status’</inlineHelpText>
+    <label>Related Deletion Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,32 @@
+<template>
+    <lightning-layout multiple-rows="true">
+        <template for:each={getIterationsForFeed} for:item="iteration" >
+            <lightning-layout-item key={iteration.key} size="12" small-device-size={viewPortSize} medium-device-size={viewPortSize} large-device-size={viewPortSize}>
+                <div class={getChildClass}>
+                    <div class="placeholder feed">
+                        <!-- Design Skeleton -->
+                        <div class="card">
+                            <div if:true={iteration.isHeaderImageAvailable} class="custom-header-image"></div>
+                            <div class="flex-grid flex-v-center">
+                                <div if:true={iteration.isIconAvailable} class="icon icon-round-large"></div>
+                                <div class="text-body">
+                                    <div class="text text-short text-thinnest" style="margin: 0;"></div>
+                                    <div class="text text-thinnest" ></div>
+                                </div>
+                            </div>
+                            <div class="text-body">
+                                <template for:each={iteration.lines} for:item="line">
+                                    <div key={line.key} class={line.class}></div>
+                                </template>
+                            </div>
+                            <div if:true={iteration.isActionAvailable} class="actions">
+                                <div class="text text-shorter text-thin"></div>
+                                <div class="text text-shorter text-thin"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </lightning-layout-item>
+        </template>
+    </lightning-layout>
+</template>

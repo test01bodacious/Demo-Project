@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Overall_Rollback_Status__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The rollback status of the Master object’s record corresponding to the Data Clean record and all its associated child record combined</description>
+    <externalId>false</externalId>
+    <formula>IF(
+    !OR(
+        CONTAINS(TEXT(DC_Configuration__r.Data_Clean_Action__c), &apos;Rollback&apos;),
+        CONTAINS(TEXT(DC_Configuration__r.Data_Clean_Action__c), &apos;Archive&apos;)
+    ),
+    &apos;Not Eligible&apos;,
+    IF(
+        !( Is_Rollback_Completed__c ),
+        &apos;Pending&apos;,
+        IF(
+            OR(TEXT(Master_Record_Rollback_Status__c) = Related_Rollback_Status__c, Related_Rollback_Status__c = &apos;No Records Found&apos;),
+            TEXT(Master_Record_Rollback_Status__c),
+            &apos;Partial Success&apos;
+        )
+    )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>The rollback status of the Master object’s record corresponding to the Data Clean record and all its associated child record combined</inlineHelpText>
+    <label>Overall Rollback Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

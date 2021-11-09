@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Related_Failure__c</fullName>
+    <defaultValue>0</defaultValue>
+    <deprecated>false</deprecated>
+    <description>The total number records of [Related Object Name] which are associated with the parent Master object which failed during the operation</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The total number records of [Related Object Name] which are associated with the parent Master object which failed during the operation</inlineHelpText>
+    <label>Total Related Failure</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

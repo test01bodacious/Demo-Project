@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_File_Size_Bytes__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The size of total files (in bytes) associated with all DC-Results for this DC-Configuration record</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The size of total files (in bytes) associated with all DC-Results for this DC-Configuration record</inlineHelpText>
+    <label>Total File Size (Bytes)</label>
+    <summarizedField>DC_Result__c.Total_File_Size_Bytes__c</summarizedField>
+    <summaryForeignKey>DC_Result__c.DC_Configuration__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

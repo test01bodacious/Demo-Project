@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Backup_Expiry_Date__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The date at which the backups will be automatically deleted in layman text</description>
+    <externalId>false</externalId>
+    <formula>&apos;After &apos; + TEXT(Delete_Backups_After__c) + &apos; &apos; + TEXT(Delete_Backups_Unit__c) + &apos; (at &apos; + LEFT(TEXT(Delete_Backups_Time__c), 5) + &apos;) of Masking/Deletion Completion&apos;</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>The date at which the backups will be automatically deleted in layman text</inlineHelpText>
+    <label>Backup Expiry Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

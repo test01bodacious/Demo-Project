@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Retry_Deletion__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Retry Deletion of failed and/or new records</description>
+    <externalId>false</externalId>
+    <formula>IF(
+    !CONTAINS(TEXT(Data_Clean_Action__c), &apos;Deletion&apos;),
+    false,
+    IF(
+        OR(
+            ISPICKVAL(Data_Clean_Action__c, &apos;Masking + Deletion&apos;),
+            ISPICKVAL(Data_Clean_Action__c, &apos;Masking + Rollback + Deletion&apos;)
+        ),
+        Retry_Process2__c,
+        Retry_Process__c
+    )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Retry Deletion of failed and/or new records</inlineHelpText>
+    <label>Retry Deletion?</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

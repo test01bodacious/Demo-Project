@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Email_Ids_to_Notify__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Email Ids on which process completion notification will be send</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Email Ids on which process completion notification will be send</inlineHelpText>
+    <label>Email Ids to Notify</label>
+    <length>500</length>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

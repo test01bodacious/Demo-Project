@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Related_Job_Completed__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>True if the processing of this child object is completed</description>
+    <externalId>false</externalId>
+    <inlineHelpText>True if the processing of this child object is completed</inlineHelpText>
+    <label>Is Related Job Completed</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

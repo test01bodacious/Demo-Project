@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DC_Result__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The result record associated with which captures the result of the parent object</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The result record associated with which captures the result of the parent object</inlineHelpText>
+    <label>DC-Result</label>
+    <referenceTo>DC_Result__c</referenceTo>
+    <relationshipLabel>DC-Related Results</relationshipLabel>
+    <relationshipName>DC_Related_Results</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

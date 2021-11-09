@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Masking_Scheduled_Delete_DateTime_Init__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The date time scheduled for initial deletion of the old successfully masked records of master object.</description>
+    <externalId>false</externalId>
+    <formula>CASE(
+    TEXT(Data_Clean_Action__c),
+    &apos;Masking + Deletion&apos;, Process2_Scheduled_DateTime_Init__c,
+    &apos;Masking + Rollback + Deletion&apos;, Process2_Scheduled_DateTime_Init__c,
+    null
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>The date time scheduled for initial deletion of the old successfully masked records of master object.</inlineHelpText>
+    <label>Masking-Scheduled Delete DateTime(Init)</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>DateTime</type>
+</CustomField>

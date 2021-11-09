@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Process2_Start_Time__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Preferred start time when the second process post successful first processing Starts. Midnight time is recommended</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Preferred start time when the second process post successful first processing Starts. Midnight time is recommended</inlineHelpText>
+    <label>Process2 Start Time</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Time</type>
+</CustomField>

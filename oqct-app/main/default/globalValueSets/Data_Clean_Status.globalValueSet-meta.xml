@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Pending</fullName>
+        <default>true</default>
+        <label>Pending</label>
+    </customValue>
+    <customValue>
+        <fullName>Not Eligible</fullName>
+        <default>false</default>
+        <label>Not Eligible</label>
+    </customValue>
+    <customValue>
+        <fullName>Partial Success</fullName>
+        <default>false</default>
+        <label>Partial Success</label>
+    </customValue>
+    <customValue>
+        <fullName>Success</fullName>
+        <default>false</default>
+        <label>Success</label>
+    </customValue>
+    <customValue>
+        <fullName>No Records Found</fullName>
+        <default>false</default>
+        <label>No Records Found</label>
+    </customValue>
+    <customValue>
+        <fullName>Failed</fullName>
+        <default>false</default>
+        <label>Failed</label>
+    </customValue>
+    <description>Status Values of Masking, Deletion, Archive, Cloning and Rollback Process</description>
+    <masterLabel>Data Clean Status</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

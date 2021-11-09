@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Related_Failure_Deletion__c</fullName>
+    <defaultValue>0</defaultValue>
+    <deprecated>false</deprecated>
+    <description>The total number of child record of [Related Object Name] of the Master object associated with the corresponding Data Clean record that failed Delete operation</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The total number of child record of [Related Object Name] of the Master object associated with the corresponding Data Clean record that failed Delete operation</inlineHelpText>
+    <label>Total Related Failure (Deletion)</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Data_Clean__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <description>The Data Clean record (which represents parent record) to which it is associated</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The Data Clean record (which represents parent record) to which it is associated</inlineHelpText>
+    <label>Data Clean</label>
+    <referenceTo>Data_Clean__c</referenceTo>
+    <relationshipLabel>Data Clean Success Childs</relationshipLabel>
+    <relationshipName>Data_Clean_Success_Childs</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

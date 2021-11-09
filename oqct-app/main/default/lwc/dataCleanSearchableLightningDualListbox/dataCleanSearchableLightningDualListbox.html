@@ -1,0 +1,38 @@
+<!--
+  @description       : NA
+  @author            : Krrish Joy
+  @group             : OQCT Limited
+  @last modified on  : 2021-03-22
+  @last modified by  : Krrish Joy
+  Modifications Log 
+  Ver   Date         Author         Modification
+  1.0   2020-12-04   Krrish Joy   Initial Version
+-->
+<template>
+    <div class="searchable-dual-list-box-container">
+        <div onchange={handleSearchTermChange}>
+            <lightning-input
+                name="enter-search"
+                label={inputLabel}
+                type="search"
+                placeholder={inputPlaceHolder}
+                class="input-search"
+                disabled={inputDisabled}
+            ></lightning-input>
+        </div>
+
+        <lightning-dual-listbox
+            name="options"
+            label={dualListBoxLabel}
+            source-label={dualListBoxSourceLabel}
+            selected-label={dualListBoxSelectedLabel}
+            onchange={handleSelectedValuesChange}
+            variant="label-hidden"
+            size={dualListBoxSize}
+            options={filteredAllOptions}
+            show-activity-indicator={isLoading}
+            value={selectedValues}
+            disabled={disabled}
+        ></lightning-dual-listbox>
+    </div>
+</template>

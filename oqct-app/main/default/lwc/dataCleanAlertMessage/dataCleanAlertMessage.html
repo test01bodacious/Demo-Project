@@ -1,0 +1,42 @@
+<!--
+  @description       : NA
+  @author            : Krrish Joy
+  @group             : OQCT Limited
+  @last modified on  : 2021-02-18
+  @last modified by  : Krrish Joy
+  Modifications Log 
+  Ver   Date         Author         Modification
+  1.0   2020-12-20   Krrish Joy   Initial Version
+-->
+<template>
+    <div class={containerClass} role="alert">
+        <span class="slds-assistive-text">{assistiveText}</span>
+        <span class={iconClass} title={iconDescription}>
+            <lightning-icon
+                icon-name={iconName}
+                alternative-text={iconText}
+                size="x-small"
+                title={iconText}
+                variant="inverse"
+            ></lightning-icon>
+        </span>
+        <h2>
+            <slot> </slot>
+            <template if:true={moreInfoUrl}>
+                &nbsp;
+                <a href={moreInfoUrl}>More Information</a>
+            </template>
+        </h2>
+        <template if:false={hideCloseButton}>
+            <div class="slds-notify__close">
+                <lightning-button-icon
+                    icon-name="utility:close"
+                    variant="bare-inverse"
+                    alternative-text="Close"
+                    title="Close"
+                    onclick={handleAlertClose}
+                ></lightning-button-icon>
+            </div>
+        </template>
+    </div>
+</template>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Parent_Archive_Completed__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>FALSE if the rollback archival for parent record is ongoing; TRUE, if it is completed</description>
+    <externalId>false</externalId>
+    <inlineHelpText>FALSE if the rollback archival for parent record is ongoing; TRUE, if it is completed</inlineHelpText>
+    <label>Is Parent Archive Completed</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

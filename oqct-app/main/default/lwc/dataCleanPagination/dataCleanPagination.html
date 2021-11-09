@@ -1,0 +1,82 @@
+<!--
+  @description       : NA
+  @author            : Krrish Joy
+  @group             : OQCT Limited
+  @last modified on  : 2021-02-18
+  @last modified by  : Krrish Joy
+  Modifications Log 
+  Ver   Date         Author         Modification
+  1.0   2021-01-03   Krrish Joy   Initial Version
+-->
+<template>
+    <template if:true={showNavigationPanel}>
+        <!-- Pagination Navigation Control Panel -->
+        <div class="navigationPanelContainer">
+            <div class="slds-grid slds-p-around_small slds-grid_align-center">
+                <div
+                    class="slds-col slds-size_2-of-12 slds-medium-size_2-of-12 slds-large-size_2-of-12 slds-align_absolute-center slds-p-around_x-small"
+                >
+                    <template if:true={showNavigationFirstButton}>
+                        <lightning-button
+                            variant="Neutral"
+                            label="&#9668;&#9668;"
+                            title="First Page"
+                            onclick={firstPage}
+                            disabled={isFirstDisabled}
+                        ></lightning-button>
+                    </template>
+                </div>
+
+                <div
+                    class="slds-col slds-size_2-of-12 slds-medium-size_2-of-12 slds-large-size_2-of-12 slds-align_absolute-center slds-p-around_x-small"
+                >
+                    <template if:true={showNavigationPrevButton}>
+                        <lightning-button
+                            variant="Neutral"
+                            label="&#9664;"
+                            title="Previous Page"
+                            onclick={prevPage}
+                            disabled={isPreviousDisabled}
+                        ></lightning-button>
+                    </template>
+                </div>
+
+                <div
+                    class="slds-col slds-size_4-of-12 slds-medium-size_4-of-12 slds-large-size_4-of-12 slds-align_absolute-center slds-p-around_x-small"
+                >
+                    <lightning-formatted-text
+                        value={pageViewingText}
+                    ></lightning-formatted-text>
+                </div>
+
+                <div
+                    class="slds-col slds-size_2-of-12 slds-medium-size_2-of-12 slds-large-size_2-of-12 slds-align_absolute-center slds-p-around_x-small"
+                >
+                    <template if:true={showNavigationNextButton}>
+                        <lightning-button
+                            variant="Neutral"
+                            label="&#9654;"
+                            title="Next Page"
+                            onclick={nextPage}
+                            disabled={isNextDisabled}
+                        ></lightning-button>
+                    </template>
+                </div>
+
+                <div
+                    class="slds-col slds-size_2-of-12 slds-medium-size_2-of-12 slds-large-size_2-of-12 slds-align_absolute-center slds-p-around_x-small"
+                >
+                    <template if:true={showNavigationLastButton}>
+                        <lightning-button
+                            variant="Neutral"
+                            label="&#9658;&#9658;"
+                            title="Last Page"
+                            onclick={finalPage}
+                            disabled={isLastDisabled}
+                        ></lightning-button>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </template>
+</template>

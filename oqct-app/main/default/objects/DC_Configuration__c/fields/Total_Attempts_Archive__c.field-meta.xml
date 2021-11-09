@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Attempts_Archive__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Total Number of retries/attempts made for the archival process</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Total Number of retries/attempts made for the archival process</inlineHelpText>
+    <label>Total Attempts (Archive)</label>
+    <summarizedField>DC_Result__c.Attempt_No__c</summarizedField>
+    <summaryFilterItems>
+        <field>DC_Result__c.Process__c</field>
+        <operation>equals</operation>
+        <value>Archive</value>
+    </summaryFilterItems>
+    <summaryForeignKey>DC_Result__c.DC_Configuration__c</summaryForeignKey>
+    <summaryOperation>max</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

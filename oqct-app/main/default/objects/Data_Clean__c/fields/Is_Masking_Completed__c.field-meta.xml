@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Masking_Completed__c</fullName>
+    <deprecated>false</deprecated>
+    <description>FALSE if the masking process for parent record and related child records is ongoing; TRUE, if it is completed</description>
+    <externalId>false</externalId>
+    <formula>AND(Is_Parent_Masking_Completed__c, Total_Related_Masking_Completion__c =  ( Total_Related_Objects__c -  Total_Related_Objects_Delete__c ))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>FALSE if the masking process for parent record and related child records is ongoing; TRUE, if it is completed</inlineHelpText>
+    <label>Is Masking Completed</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

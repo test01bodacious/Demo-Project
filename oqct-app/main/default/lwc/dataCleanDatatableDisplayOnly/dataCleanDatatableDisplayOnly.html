@@ -1,0 +1,21 @@
+<!--
+  @description       : NA
+  @author            : Krrish Joy
+  @group             : OQCT Limited
+  @last modified on  : 2021-02-18
+  @last modified by  : Krrish Joy
+  Modifications Log 
+  Ver   Date         Author         Modification
+  1.0   2021-01-03   Krrish Joy   Initial Version
+-->
+<template>
+    <c-data-clean-custom-lightning-datatable
+        key-field={keyField}
+        data={tableData}
+        columns={columns}
+        onrowaction={handleRowAction}
+        onnavigationlinkclick={handleNavigationLinkClick}
+        hide-checkbox-column
+    >
+    </c-data-clean-custom-lightning-datatable>
+</template>

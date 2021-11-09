@@ -1,0 +1,65 @@
+<!--
+  @description       : NA
+  @author            : Krrish Joy
+  @group             : OQCT Limited
+  @last modified on  : 2021-02-18
+  @last modified by  : Krrish Joy
+  Modifications Log 
+  Ver   Date         Author         Modification
+  1.0   2020-12-04   Krrish Joy   Initial Version
+
+  Examples of use:
+
+  <c-navigation-link label="Chatter" title="Navigate to a standard page. In this example, Chatter home."                 
+  type="standard__namedPage" page-name="chatter"></c-navigation-link>
+
+  <c-navigation-link label="Home" title="Navigate to a standard page. In this example, the Home page."                
+      type="standard__namedPage" page-name="home"></c-navigation-link>
+
+  <c-navigation-link label="Hello" title="Navigate to a custom page. In this example, the Hello tab."                  
+      type="standard__navItemPage" api-name="Hello"></c-navigation-link>
+
+  <c-navigation-link label="Files Home" title="Navigate to an object home page. In this example, the Files home."           
+      type="standard__objectPage" action-name="home" object-api-name="ContentDocument"></c-navigation-link>
+
+  <c-navigation-link label="List View" title="Navigate to a list view. In this example, Contacts list."                    
+      type="standard__objectPage" object-api-name="Contact" action-name="list"></c-navigation-link>
+
+  <c-navigation-link label="New Contact" title="Navigate to a new record page. In this example, a new contact page."         
+      type="standard__objectPage" object-api-name="Contact" action-name="new"></c-navigation-link>
+
+  <c-navigation-link label="View Contact" title="Navigate to a record page. In this example, a contact."                      
+      type="standard__recordPage" record-id="003a000002UkPDtAAN"></c-navigation-link>
+
+  <c-navigation-link label="Edit Contact" title="Navigate to a edit record page. In this example, a contact."                 
+      type="standard__recordPage" record-id="003a000002UkPDtAAN" action-name="edit"></c-navigation-link>
+      
+  <c-navigation-link label="Account Contacts" title="Navigate to a related list. In this example, an Account's Related Contacts." 
+      type="standard__recordRelationshipPage" record-id="001a000001s8zS1AAI" object-api-name="Account" relationship-api-name="Contacts" action-name="view"></c-navigation-link>
+
+-->
+<template>
+    <template if:true={isLink}>
+        <a href={url} onclick={handleClick} title={title} target={target}
+            >{label}</a
+        >
+    </template>
+
+    <template if:true={isPreviewIcon}>
+        <lightning-button-icon
+            icon-name="utility:preview"
+            variant="brand"
+            alternative-text={label}
+            onclick={handleClick}
+        ></lightning-button-icon>
+    </template>
+
+    <template if:true={isEditIcon}>
+        <lightning-button-icon
+            icon-name="utility:edit"
+            variant="brand"
+            alternative-text={label}
+            onclick={handleClick}
+        ></lightning-button-icon>
+    </template>
+</template>

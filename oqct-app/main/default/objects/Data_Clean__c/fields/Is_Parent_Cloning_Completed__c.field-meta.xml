@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Parent_Cloning_Completed__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>FALSE if the cloning for parent record is not completed or not required; TRUE, if it is completed</description>
+    <externalId>false</externalId>
+    <inlineHelpText>FALSE if the cloning for parent record is not completed or not required; TRUE, if it is completed</inlineHelpText>
+    <label>Is Parent Cloning Completed</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

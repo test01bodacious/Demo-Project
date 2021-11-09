@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Master_Object_Name__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The name of the object which is to be masked/deleted</description>
+    <externalId>false</externalId>
+    <formula>DC_Configuration__r.Master_Object_Name__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>The name of the object which is to be masked/deleted</inlineHelpText>
+    <label>Master Object Name</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

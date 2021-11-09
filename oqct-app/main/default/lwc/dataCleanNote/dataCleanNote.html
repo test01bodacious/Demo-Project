@@ -1,0 +1,73 @@
+<!--
+  @description       : NA
+  @author            : Krrish Joy
+  @group             : OQCT Limited
+  @last modified on  : 2021-02-18
+  @last modified by  : Krrish Joy
+  Modifications Log 
+  Ver   Date         Author         Modification
+  1.0   2021-01-12   Krrish Joy   Initial Version
+-->
+<template>
+    <c-data-clean-card>
+        <span slot="title"> Data Clean Team Notes </span>
+        <span slot="actions">
+            <lightning-button
+                label="Edit Notes"
+                title="Edit Notes"
+                variant="brand-outline"
+                icon-name="utility:edit"
+                icon-position="right"
+                disabled={isEditMode}
+                onclick={handleEditNotesClick}
+            ></lightning-button>
+        </span>
+        <span>
+            <template if:false={isEditMode}>
+                <lightning-formatted-rich-text
+                    value={originalDataCleanNotes}
+                ></lightning-formatted-rich-text>
+            </template>
+            <template if:true={isEditMode}>
+                <lightning-input-rich-text
+                    placeholder="Add some notes here..."
+                    value={dataCleanTeamNotes}
+                    onchange={handledataCleanTeamNotesChange}
+                >
+                </lightning-input-rich-text>
+                <template if:true={isLoading}>
+                    <div class="listViewContainer">
+                        <lightning-spinner
+                            alternative-text="Loading"
+                            variant="brand"
+                        ></lightning-spinner>
+                    </div>
+                </template>
+            </template>
+        </span>
+        <template if:true={isEditMode}>
+            <span slot="footer">
+                <lightning-button
+                    label="Cancel"
+                    title="Cancel"
+                    onclick={handleCancelTeamNotes}
+                    variant="brand-outline"
+                ></lightning-button>
+                <lightning-button
+                    label="Clear Team Notes"
+                    title="Clear Team Notes"
+                    class="slds-p-left_medium"
+                    onclick={handleClearTeamNotes}
+                    variant="destructive-text"
+                ></lightning-button>
+                <lightning-button
+                    label="Save Team Notes"
+                    title="Save Team Notes"
+                    class="slds-p-left_medium"
+                    onclick={handleSaveTeamNotes}
+                    variant="brand"
+                ></lightning-button>
+            </span>
+        </template>
+    </c-data-clean-card>
+</template>

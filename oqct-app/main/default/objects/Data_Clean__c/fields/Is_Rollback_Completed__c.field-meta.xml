@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Rollback_Completed__c</fullName>
+    <deprecated>false</deprecated>
+    <description>FALSE if the rollback process for parent record and related child records is ongoing; TRUE, if it is completed</description>
+    <externalId>false</externalId>
+    <formula>AND(Is_Parent_Rollback_Completed__c, Total_Related_Rollback_Completion__c = Total_Data_Clean_Related_Results__c)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>FALSE if the rollback process for parent record and related child records is ongoing; TRUE, if it is completed</inlineHelpText>
+    <label>Is Rollback Completed</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

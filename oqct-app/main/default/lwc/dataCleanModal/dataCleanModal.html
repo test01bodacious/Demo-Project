@@ -1,0 +1,97 @@
+<!--
+  @description       : NA
+  @author            : Krrish Joy
+  @group             : OQCT Limited
+  @last modified on  : 2021-02-22
+  @last modified by  : Krrish Joy
+  Modifications Log 
+  Ver   Date         Author         Modification
+  1.0   2020-11-10   Krrish Joy   Initial Version
+-->
+<!-- How to use
+BASIC:
+<c-data-clean-modal header="YOUR HEADER" data-id="custom-modal">
+    <p>
+        YOUR BODY
+    </p>
+    <span slot="footer">
+        YOUR FOOTER
+    </span>
+</c-data-clean-modal>
+
+ADVANCE:
+<c-data-clean-modal type="success-prompt" modal-overflow data-id="custom-modal" onclosedialog={handleCloseDialog}>
+    <span slot="header">
+        YOUR HEADER
+    </span>
+    <span slot="tagline">
+        YOUR TAGLINE
+    </span>
+    <span>
+        YOUR BODY
+    </span>
+    <span slot="footer">
+        YOUR FOOTER
+    </span>
+</c-data-clean-modal>
+-->
+<template>
+    <template if:true={showModal}>
+        <section
+            role={modalSectionRole}
+            tabindex={modalSectionTabIndex}
+            aria-labelledby={modalSectionAriaLabelledby}
+            aria-modal={modalSectionAriaModal}
+            aria-describedby={modalSectionAriaDescribedby}
+            class={modalSectionClass}
+        >
+            <div class="slds-modal__container">
+                <header class={modalHeaderClass}>
+                    <lightning-button-icon
+                        class="slds-modal__close"
+                        title="Close"
+                        icon-name="utility:close"
+                        icon-class="slds-button_icon-inverse"
+                        onclick={handleDialogClose}
+                    ></lightning-button-icon>
+
+                    <template if:true={hasHeaderString}>
+                        <h2 class="slds-text-heading_medium slds-hyphenate">
+                            {header}
+                        </h2>
+                    </template>
+                    <template if:false={hasHeaderString}>
+                        <!-- If you don't set the header public property, make sure to 
+                                pass in some content into the header slot, so that the component
+                                is accessible, as empty headings are considered not accessible. -->
+                        <h2 class="slds-text-heading_medium slds-hyphenate">
+                            <slot name="header"></slot>
+                        </h2>
+                    </template>
+
+                    <p class="slds-m-top_x-small modal-hidden">
+                        <slot
+                            name="tagline"
+                            onslotchange={handleSlotTaglineChange}
+                        ></slot>
+                    </p>
+                </header>
+
+                <div
+                    class="slds-modal__content slds-p-around_medium"
+                    style={modalOverflowStyle}
+                >
+                    <slot></slot>
+                </div>
+
+                <footer class="slds-modal__footer modal-hidden">
+                    <slot
+                        name="footer"
+                        onslotchange={handleSlotFooterChange}
+                    ></slot>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

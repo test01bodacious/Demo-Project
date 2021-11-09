@@ -1,0 +1,48 @@
+<!--
+  @description       : NA
+  @author            : Krrish Joy
+  @group             : OQCT Limited
+  @last modified on  : 2021-02-18
+  @last modified by  : Krrish Joy
+  Modifications Log 
+  Ver   Date         Author         Modification
+  1.0   2021-01-22   Krrish Joy   Initial Version
+-->
+<template>
+    <c-data-clean-modal
+        type={type}
+        size="small"
+        header={promptHeading}
+        data-id="promptModal"
+    >
+        <slot> Are you sure? </slot>
+
+        <span slot="footer">
+            <div class="slds-align_absolute-center" style="height: 3rem">
+                <template if:true={showConfirmButtonPanel}>
+                    <lightning-button
+                        label="Cancel"
+                        title="Cancel"
+                        variant={cancelButtonVariant}
+                        onclick={handleCancel}
+                    ></lightning-button>
+                    <lightning-button
+                        class="slds-p-left_medium"
+                        label="Confirm"
+                        title="Confirm"
+                        variant={confirmButtonVariant}
+                        onclick={handleConfirm}
+                    ></lightning-button>
+                </template>
+                <template if:false={showConfirmButtonPanel}>
+                    <lightning-button
+                        label="OK"
+                        title="OK"
+                        variant={cancelButtonVariant}
+                        onclick={handleCancel}
+                    ></lightning-button>
+                </template>
+            </div>
+        </span>
+    </c-data-clean-modal>
+</template>

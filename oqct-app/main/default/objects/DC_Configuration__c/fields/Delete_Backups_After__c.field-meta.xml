@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Delete_Backups_After__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The span after which the backup files will be automatically deleted</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The span after which the backup files will be automatically deleted</inlineHelpText>
+    <label>Delete Backups After</label>
+    <precision>10</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

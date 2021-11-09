@@ -1,0 +1,10 @@
+.spinner-container {
+    position: relative;
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+}
+
+.slds-radio {
+    padding: 10px;
+}

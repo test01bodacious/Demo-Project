@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Related_Masking_Status__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The masking status of the child records of [Related Object Name] of the Master object associated with the corresponding Data Clean record. The picklist takes its values from the Global Picklist ‘Data Clean Treatment Status’</description>
+    <externalId>false</externalId>
+    <formula>IF(
+    OR(!CONTAINS(TEXT(Data_Clean__r.DC_Configuration__r.Data_Clean_Action__c), &apos;Masking&apos;), Delete_Related_Records__c),
+    &apos;Not Eligible&apos;,
+    IF(
+        !(Is_Related_Masking_Completed__c),
+        &apos;Pending&apos;,
+        IF(
+            AND(Total_Related_Success_Masking__c &gt; 0, Total_Related_Failure_Masking__c = 0),
+            &apos;Success&apos;,
+            IF(
+                AND(Total_Related_Success_Masking__c = 0, Total_Related_Failure_Masking__c &gt; 0),
+                &apos;Failed&apos;,
+                IF(
+                    AND(Total_Related_Success_Masking__c &gt; 0, Total_Related_Failure_Masking__c &gt; 0),
+                    &apos;Partial Success&apos;,
+                    IF(
+                        AND(Total_Related_Success_Masking__c = 0, Total_Related_Failure_Masking__c = 0),
+                        &apos;No Records Found&apos;,
+                        null
+                    )
+                )
+            )
+        )
+    )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>The masking status of the child records of [Related Object Name] of the Master object associated with the corresponding Data Clean record. The picklist takes its values from the Global Picklist ‘Data Clean Treatment Status’</inlineHelpText>
+    <label>Related Masking Status</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

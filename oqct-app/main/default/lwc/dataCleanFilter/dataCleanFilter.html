@@ -1,0 +1,194 @@
+<!--
+  @description       : NA
+  @author            : Krrish Joy
+  @group             : OQCT Limited
+  @last modified on  : 2021-02-18
+  @last modified by  : Krrish Joy
+  Modifications Log 
+  Ver   Date         Author         Modification
+  1.0   2021-01-13   Krrish Joy   Initial Version
+-->
+<template>
+    <template if:false={isFilters}>
+        <div class="slds-align_absolute-center" style="height: 3rem">
+            No Filters. Click 'Add Filters' to add filter(s)
+        </div>
+    </template>
+    <template for:each={filters} for:item="filter">
+        <lightning-layout key={filter.filterNumber} vertical-align="center">
+            <lightning-layout-item padding="around-small" flexibility="auto">
+                <lightning-combobox
+                    name="Field"
+                    data-filter-number={filter.filterNumber}
+                    label="Field"
+                    options={fieldOptions}
+                    value={filter.field}
+                    onchange={handleFieldChange}
+                ></lightning-combobox>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" flexibility="auto">
+                <lightning-combobox
+                    name="Operator"
+                    data-filter-number={filter.filterNumber}
+                    label="Operator"
+                    options={filter.operatorOptions}
+                    value={filter.operator}
+                    onchange={handleOperatorChange}
+                ></lightning-combobox>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" flexibility="auto">
+                <template if:true={filter.isBoolean}>
+                    <c-data-clean-toggle-button
+                        data-filter-number={filter.filterNumber}
+                        checked={filter.value}
+                        show-toggle-on-off-text
+                        toggle-on-text="TRUE"
+                        toggle-off-text="FALSE"
+                        style="position: absolute"
+                        ontogglechange={handleToggleValueChange}
+                    >
+                    </c-data-clean-toggle-button>
+                </template>
+                <template if:true={filter.isCurrency}>
+                    <lightning-input
+                        type="number"
+                        data-filter-number={filter.filterNumber}
+                        label="Value"
+                        value={filter.value}
+                        formatter="currency"
+                        step="0.01"
+                        onchange={handleValueChange}
+                    ></lightning-input>
+                </template>
+                <template if:true={filter.isDate}>
+                    <lightning-input
+                        type="date"
+                        data-filter-number={filter.filterNumber}
+                        label="Value"
+                        value={filter.value}
+                        onchange={handleValueChange}
+                    ></lightning-input>
+                </template>
+                <template if:true={filter.isDateTime}>
+                    <lightning-input
+                        type="datetime"
+                        data-filter-number={filter.filterNumber}
+                        label="Value"
+                        value={filter.value}
+                        timezone={timezone}
+                        onchange={handleValueChange}
+                    ></lightning-input>
+                </template>
+                <template if:true={filter.isTime}>
+                    <lightning-input
+                        type="time"
+                        data-filter-number={filter.filterNumber}
+                        label="Value"
+                        value={filter.value}
+                        onchange={handleValueChange}
+                    ></lightning-input>
+                </template>
+                <template if:true={filter.isEmail}>
+                    <lightning-input
+                        type="email"
+                        data-filter-number={filter.filterNumber}
+                        label="Value"
+                        value={filter.value}
+                        onchange={handleValueChange}
+                    ></lightning-input>
+                </template>
+                <template if:true={filter.isNumber}>
+                    <lightning-input
+                        type="number"
+                        data-filter-number={filter.filterNumber}
+                        label="Value"
+                        value={filter.value}
+                        onchange={handleValueChange}
+                    ></lightning-input>
+                </template>
+                <template if:true={filter.isPercent}>
+                    <lightning-input
+                        type="number"
+                        data-filter-number={filter.filterNumber}
+                        label="Value"
+                        value={filter.value}
+                        formatter="percent"
+                        step="0.01"
+                        onchange={handleValueChange}
+                    ></lightning-input>
+                </template>
+                <template if:true={filter.isPhone}>
+                    <lightning-input
+                        type="tel"
+                        data-filter-number={filter.filterNumber}
+                        label="Value"
+                        value={filter.value}
+                        onchange={handleValueChange}
+                    ></lightning-input>
+                </template>
+                <template if:true={filter.isText}>
+                    <lightning-input
+                        type="text"
+                        data-filter-number={filter.filterNumber}
+                        label="Value"
+                        value={filter.value}
+                        onchange={handleValueChange}
+                    ></lightning-input>
+                </template>
+                <template if:true={filter.isUrl}>
+                    <lightning-input
+                        type="url"
+                        data-filter-number={filter.filterNumber}
+                        label="Value"
+                        value={filter.value}
+                        onchange={handleValueChange}
+                    ></lightning-input>
+                </template>
+                <template if:true={filter.isNavigation}>
+                    <lightning-input
+                        type="text"
+                        data-filter-number={filter.filterNumber}
+                        label="Value"
+                        value={filter.value}
+                        onchange={handleValueChange}
+                    ></lightning-input>
+                </template>
+            </lightning-layout-item>
+            <lightning-layout-item
+                padding="around-small"
+                flexibility="auto, no-grow"
+            >
+                <template if:true={filter.showRemoveButton}>
+                    <button
+                        name="Remove Filter"
+                        data-filter-number={filter.filterNumber}
+                        onclick={handleRemoveFilterClick}
+                        title="Remove Filter"
+                        class="slds-button slds-m-top_large"
+                        style="fill: red"
+                    >
+                        <lightning-icon
+                            size="xx-small"
+                            icon-name="action:delete"
+                            alternative-text="Remove Filter"
+                        ></lightning-icon>
+                    </button>
+                </template>
+                <template if:false={filter.showRemoveButton}>
+                    <p style="width: 33px"></p>
+                </template>
+            </lightning-layout-item>
+        </lightning-layout>
+        <br key={filter.filterNumber} />
+    </template>
+    <!-- <br />
+    <div class="slds-p_around-small slds-align_absolute-center">
+        <lightning-input
+            type="text"
+            name="FilterLogic"
+            label="Filter Logic"
+            value={filterLogic}
+            onchange={handleFilterLogicChange}
+        ></lightning-input>
+    </div> -->
+</template>

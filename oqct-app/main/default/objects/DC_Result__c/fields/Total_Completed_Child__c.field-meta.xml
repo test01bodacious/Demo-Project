@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Completed_Child__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Total number of child object which are done processing</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Total number of child object which are done processing</inlineHelpText>
+    <label>Total Completed Child</label>
+    <summaryFilterItems>
+        <field>DC_Related_Result__c.Is_Related_Job_Completed__c</field>
+        <operation>equals</operation>
+        <value>True</value>
+    </summaryFilterItems>
+    <summaryForeignKey>DC_Related_Result__c.DC_Result__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

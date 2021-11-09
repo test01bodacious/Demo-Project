@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Child_Object_Name__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The name of the child object</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The name of the child object</inlineHelpText>
+    <label>Child Object Name</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

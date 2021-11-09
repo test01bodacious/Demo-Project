@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Master_Record_Delete_Skipped__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>The checkbox that indicates that the deletion of this Master object&apos;s record was skipped in initial batch processing because the same appear as a child object (in Related List). Eg (Account to Account) self relationship</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The checkbox that indicates that the deletion of this Master object&apos;s record was skipped in initial batch processing because the same appear as a child object (in Related List). Eg (Account to Account) self relationship</inlineHelpText>
+    <label>Master Record Delete Skipped</label>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

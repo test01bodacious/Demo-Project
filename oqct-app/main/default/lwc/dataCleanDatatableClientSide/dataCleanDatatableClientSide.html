@@ -1,0 +1,30 @@
+<!--
+  @description       : NA
+  @author            : Krrish Joy
+  @group             : OQCT Limited
+  @last modified on  : 2021-02-18
+  @last modified by  : Krrish Joy
+  Modifications Log 
+  Ver   Date         Author         Modification
+  1.0   2021-01-03   Krrish Joy   Initial Version
+-->
+<template>
+    <c-data-clean-custom-lightning-datatable
+        key-field={keyField}
+        data={perPageTableData}
+        columns={columns}
+        selected-rows={selectedRows}
+        onrowaction={handleRowAction}
+        onrowselection={handleRowSelection}
+    >
+    </c-data-clean-custom-lightning-datatable>
+    <template if:true={showNavigationPanel}>
+        <c-data-clean-pagination
+            complete-data={tableData}
+            per-page-data={perPageTableData}
+            records-per-page={recordsPerPage}
+            is-disabled={isPaginationDisabled}
+            onperpagedatachange={handleperpagedatachange}
+        ></c-data-clean-pagination>
+    </template>
+</template>

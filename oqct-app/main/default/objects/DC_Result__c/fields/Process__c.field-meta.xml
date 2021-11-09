@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Process__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The operation/action performed on the records</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The operation/action performed on the records</inlineHelpText>
+    <label>Process</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Data_Clean_Processes</valueSetName>
+    </valueSet>
+</CustomField>

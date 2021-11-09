@@ -1,0 +1,25 @@
+<!--
+  @description       : NA
+  @author            : Krrish Joy
+  @group             : OQCT Limited
+  @last modified on  : 2021-02-18
+  @last modified by  : Krrish Joy
+  Modifications Log 
+  Ver   Date         Author         Modification
+  1.0   2020-12-14   Krrish Joy   Initial Version
+-->
+<template>
+    <!--HTML template which connect custom column component with custom data clean datatable component-->
+    <c-data-clean-toggle-button
+        checked={typeAttributes.checked}
+        button-disabled={typeAttributes.buttonDisabled}
+        row-id={typeAttributes.rowId}
+        show-label={typeAttributes.showLabel}
+        label={typeAttributes.label}
+        show-toggle-on-off-text={typeAttributes.showToggleOnOffText}
+        toggle-on-text={typeAttributes.toggleOnText}
+        toggle-off-text={typeAttributes.toggleOffText}
+        toggle-color={typeAttributes.toggleColor}
+    >
+    </c-data-clean-toggle-button>
+</template>

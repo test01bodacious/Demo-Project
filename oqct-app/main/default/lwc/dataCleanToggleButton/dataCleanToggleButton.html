@@ -1,0 +1,70 @@
+<!--
+  @description       : NA
+  @author            : Krrish Joy
+  @group             : OQCT Limited
+  @last modified on  : 2021-02-18
+  @last modified by  : Krrish Joy
+  Modifications Log 
+  Ver   Date         Author         Modification
+  1.0   2020-12-14   Krrish Joy   Initial Version
+-->
+<!-- 
+    How to use
+    <c-data-clean-toggle-button
+        checked={isToggleChecked}
+        show-toggle-on-off-text
+        toggle-on-text="Yes"
+        toggle-off-text="No"
+        toggle-color="green"
+        style="margin-top: 10px"
+        ontogglechange={handleToggleChange}
+    >
+    </c-data-clean-toggle-button>
+ -->
+<template>
+    <!--Custom component which will be rendered as each cell in custom column in datatable-->
+    <!-- <lightning-input
+        type="toggle"
+        label=""
+        variant="label-hidden"
+        message-toggle-active="Selected"
+        message-toggle-inactive={getInactiveMsg}
+        checked={checked}
+        disabled={buttonDisabled}
+        onchange={handleToggle}
+    >
+    </lightning-input> -->
+    <div class="slds-form-element">
+        <label class="slds-checkbox_toggle slds-grid">
+            <template if:true={showLabel}>
+                <span class="slds-form-element__label slds-m-bottom_none"
+                    >{label}</span
+                >
+            </template>
+            <input
+                name="checkbox-toggle-16"
+                type="checkbox"
+                aria-describedby="checkbox-toggle-16"
+                value="checkbox-toggle-16"
+                checked={checked}
+                disabled={buttonDisabled}
+                onchange={handleToggleChange}
+            />
+            <span
+                id="checkbox-toggle-16"
+                class="slds-checkbox_faux_container"
+                aria-live="assertive"
+            >
+                <span class="slds-checkbox_faux" style={toggleStyle}></span>
+                <template if:true={showToggleOnOffText}>
+                    <span class="slds-checkbox_on" style={toggleTextStyle}
+                        >{toggleOnText}</span
+                    >
+                    <span class="slds-checkbox_off" style={toggleTextStyle}
+                        >{inactiveText}</span
+                    >
+                </template>
+            </span>
+        </label>
+    </div>
+</template>

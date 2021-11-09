@@ -1,0 +1,204 @@
+<!--
+  @description       : NA
+  @author            : Krrish Joy
+  @group             : OQCT Limited
+  @last modified on  : 2021-02-18
+  @last modified by  : Krrish Joy
+  Modifications Log 
+  Ver   Date         Author         Modification
+  1.0   2020-12-22   Krrish Joy   Initial Version
+-->
+<template>
+    <template if:true={isDataCleanDataTypeData}>
+        <c-data-clean-card>
+            <p slot="title">Data Clean Data Types</p>
+            <span>
+                <c-data-clean-datatable-display-only
+                    key-field="id"
+                    table-data={dataCleanDataTypeData}
+                    columns={dataCleanDataTypeColumns}
+                    onrowaction={handleRowActionDcDataType}
+                    onnavigationlinkclick={handleNavigationLinkClick}
+                ></c-data-clean-datatable-display-only>
+                <c-data-clean-modal
+                    header={editDatatypeHeader}
+                    modal-overflow
+                    data-id="editDatatypeModal"
+                >
+                    <span>
+                        <template if:true={showDataLengthValueForMasking}>
+                            <div
+                                class="slds-align_absolute-center slds-m-bottom-medium"
+                            >
+                                <div style="display: contents">
+                                    <lightning-radio-group
+                                        name="dataLengthValueForMasking"
+                                        label="Data Length Options For Masking"
+                                        options={dataLengthOptionsForMasking}
+                                        value={dataLengthValueForMasking}
+                                        type="radio"
+                                        style="font-size: x-large"
+                                        required
+                                        onchange={handleChange}
+                                    ></lightning-radio-group>
+                                </div>
+                            </div>
+                        </template>
+                        <template if:true={showCustomLengthValue}>
+                            <div
+                                class="slds-align_absolute-center slds-m-bottom-medium"
+                            >
+                                <div style="display: contents">
+                                    <lightning-input
+                                        type="number"
+                                        name="customLengthValue"
+                                        label="Custom Length"
+                                        value={customLengthValue}
+                                        max={maxLength}
+                                        min="1"
+                                        required
+                                        onchange={handleChange}
+                                    ></lightning-input>
+                                </div>
+                            </div>
+                        </template>
+                        <template if:true={showMaskingPattern}>
+                            <div
+                                class="slds-align_absolute-center slds-m-bottom-medium"
+                            >
+                                <div style="display: contents">
+                                    <lightning-combobox
+                                        name="maskingPattern"
+                                        label="Masking Pattern"
+                                        value={maskingPattern}
+                                        placeholder="Select Masking Pattern"
+                                        style="width: 700px"
+                                        options={dataTypeMaskingOptions}
+                                        required
+                                        onchange={handleChange}
+                                    ></lightning-combobox>
+                                </div>
+                            </div>
+                        </template>
+                        <template if:true={showDomainValue}>
+                            <div
+                                class="slds-align_absolute-center slds-m-bottom-medium"
+                            >
+                                <div style="display: contents">
+                                    <lightning-input
+                                        name="domainValue"
+                                        label="Enter Custom Domain"
+                                        value={domainValue}
+                                        required
+                                        onchange={handleChange}
+                                    ></lightning-input>
+                                </div>
+                            </div>
+                        </template>
+                        <template if:true={showValueType}>
+                            <div
+                                class="slds-align_absolute-center slds-m-bottom-medium"
+                            >
+                                <div style="display: contents">
+                                    <lightning-combobox
+                                        name="valueType"
+                                        label="Value Type"
+                                        value={valueType}
+                                        placeholder="Select Value Type"
+                                        style="width: 300px"
+                                        options={dataTypeOptions}
+                                        required
+                                        onchange={handleChange}
+                                    ></lightning-combobox>
+                                </div>
+                            </div>
+                        </template>
+
+                        <template if:true={spinners.dataTypeModal}>
+                            <lightning-spinner
+                                alternative-text="Loading"
+                                variant="brand"
+                            ></lightning-spinner>
+                        </template>
+                    </span>
+                    <span slot="footer">
+                        <div
+                            class="slds-align_absolute-center"
+                            style="height: 3rem"
+                        >
+                            <lightning-layout-item padding="around-small">
+                                <lightning-button
+                                    label="Cancel"
+                                    title="Cancel"
+                                    variant="brand-outline"
+                                    onclick={handleCancelDatatype}
+                                ></lightning-button
+                            ></lightning-layout-item>
+                            <lightning-layout-item padding="around-small">
+                                <lightning-button
+                                    label="Save"
+                                    title="Save"
+                                    variant="brand"
+                                    onclick={handleSaveDatatype}
+                                ></lightning-button>
+                            </lightning-layout-item>
+                        </div>
+                    </span>
+                </c-data-clean-modal>
+                <template if:true={spinners.full}>
+                    <div class="listViewContainer">
+                        <lightning-spinner
+                            alternative-text="Loading"
+                            variant="brand"
+                        ></lightning-spinner>
+                    </div>
+                </template>
+            </span>
+            <span slot="actions">
+                <lightning-button
+                    class="slds-p-left_medium"
+                    label="Export"
+                    title="Export"
+                    variant="brand-outline"
+                    onclick={handleExportClick}
+                ></lightning-button>
+                <lightning-button
+                    class="slds-p-left_medium"
+                    label="Refresh"
+                    title="Refresh"
+                    variant="brand-outline"
+                    icon-name="utility:refresh"
+                    icon-position="right"
+                    onclick={handleRefreshClick}
+                ></lightning-button>
+            </span>
+        </c-data-clean-card>
+    </template>
+
+    <template if:false={isDataCleanDataTypeData}>
+        <div class="listViewContainer">
+            <template if:true={spinners.full}>
+                <c-data-clean-stencil
+                    iterations="4"
+                    columns="4"
+                ></c-data-clean-stencil>
+            </template>
+            <template if:false={spinners.full}>
+                <c-data-clean-card>
+                    <p slot="title">Data Clean Data Types</p>
+                    <span>
+                        <div class="slds-p_around-medium" style="height: 100px">
+                            <div class="slds-box slds-align_absolute-center">
+                                <c-data-clean-alert-message
+                                    hide-close-button={hideCloseButtonOnNoData}
+                                >
+                                    {noDataMessage}
+                                </c-data-clean-alert-message>
+                            </div>
+                        </div>
+                    </span>
+                </c-data-clean-card>
+            </template>
+        </div>
+    </template>
+</template>

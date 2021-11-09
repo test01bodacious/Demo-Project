@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Related_Object__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <description>The ‘Related Object’ record associated with the ‘Record Type &amp; Field’ record. If it is empty, the record type and fields correspond to the Master object instead</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The ‘Related Object’ record associated with the ‘Record Type &amp; Field’ record. If it is empty, the record type and fields correspond to the Master object instead</inlineHelpText>
+    <label>Related Object</label>
+    <referenceTo>Related_Object__c</referenceTo>
+    <relationshipName>Record_Types_Fields</relationshipName>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

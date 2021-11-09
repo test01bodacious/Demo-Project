@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Delete_Related_Records__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>The checkbox indicates whether the record of the [Related Object Name] needs to be deleted. If ‘true’, records need to be deleted, otherwise masked (Available only if the process is Masking).</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The checkbox indicates whether the record of the [Related Object Name] needs to be deleted. If ‘true’, records need to be deleted, otherwise masked (Available only if the process is Masking).</inlineHelpText>
+    <label>Delete Related Records</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

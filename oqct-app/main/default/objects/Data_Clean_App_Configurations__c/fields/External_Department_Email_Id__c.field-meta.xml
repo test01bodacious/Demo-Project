@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>External_Department_Email_Id__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Email department associated with any external department which is to be notified</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Email department associated with any external department which is to be notified</inlineHelpText>
+    <label>External Department Email Id</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Email</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,143 @@
+<!--
+  @description       : NA
+  @author            : Krrish Joy
+  @group             : OQCT Limited
+  @last modified on  : 2021-02-18
+  @last modified by  : Krrish Joy
+  Modifications Log 
+  Ver   Date         Author         Modification
+  1.0   2021-01-30   Krrish Joy   Initial Version
+-->
+<template>
+    <c-data-clean-expandable-section
+        section-title="DC-Configuration Information"
+    >
+    </c-data-clean-expandable-section>
+    <div class="slds-p-left_medium slds-p-right_medium">
+        <div class="slds-form" role="list">
+            <template
+                for:each={previewData.dcConfigInfos}
+                for:item="dcConfigInfo"
+            >
+                <div key={dcConfigInfo.index} class="slds-form__row">
+                    <div class="slds-form__item" role="listitem">
+                        <div
+                            class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_horizontal slds-hint-parent"
+                        >
+                            <span class="slds-form-element__label"
+                                >{dcConfigInfo.label1}</span
+                            >
+                            <div class="slds-form-element__control">
+                                <div class="slds-form-element__static">
+                                    {dcConfigInfo.value1}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-form__item" role="listitem">
+                        <div
+                            class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_horizontal slds-hint-parent"
+                        >
+                            <span class="slds-form-element__label"
+                                >{dcConfigInfo.label2}</span
+                            >
+                            <div class="slds-form-element__control">
+                                <div class="slds-form-element__static">
+                                    <template if:false={dcConfigInfo.userId}>
+                                        {dcConfigInfo.value2}
+                                    </template>
+                                    <template if:true={dcConfigInfo.userId}>
+                                        <c-data-clean-navigation
+                                            label={dcConfigInfo.value2}
+                                            record-id={dcConfigInfo.userId}
+                                            target="_blank"
+                                        >
+                                        </c-data-clean-navigation>
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            <!-- Blank Row -->
+            <div class="slds-form__row">
+                <div class="slds-form__item" role="listitem">
+                    <div
+                        class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_horizontal slds-hint-parent slds-form-element_1-col"
+                    >
+                        <span class="slds-form-element__label"></span>
+                        <div class="slds-form-element__control">
+                            <div
+                                class="slds-form-element__static slds-text-longform"
+                            ></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Configuration Notes Row -->
+            <div class="slds-form__row">
+                <div class="slds-form__item" role="listitem">
+                    <div
+                        class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_horizontal slds-hint-parent slds-form-element_1-col"
+                    >
+                        <span class="slds-form-element__label"
+                            >{previewData.configurationNotesLabel}</span
+                        >
+                        <div class="slds-form-element__control">
+                            <div
+                                class="slds-form-element__static slds-text-longform"
+                            >
+                                <lightning-formatted-rich-text
+                                    value={previewData.configurationNotesValue}
+                                >
+                                </lightning-formatted-rich-text>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Blank Row -->
+            <div class="slds-form__row">
+                <div class="slds-form__item" role="listitem">
+                    <div
+                        class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_horizontal slds-hint-parent slds-form-element_1-col"
+                    >
+                        <span class="slds-form-element__label"></span>
+                        <div class="slds-form-element__control">
+                            <div
+                                class="slds-form-element__static slds-text-longform"
+                            ></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <template if:true={showRecordTypes}>
+        <c-data-clean-expandable-section
+            section-title="Master Object Information"
+        >
+        </c-data-clean-expandable-section>
+        <c-data-clean-custom-lightning-datatable
+            key-field="recordTypeId"
+            data={previewData.recordTypeData}
+            columns={previewData.recordTypeColumns}
+            hide-checkbox-column
+        >
+        </c-data-clean-custom-lightning-datatable>
+    </template>
+    <template if:true={showRelatedObjectRecordTypes}>
+        <c-data-clean-expandable-section
+            section-title="Related Objects Information"
+        >
+        </c-data-clean-expandable-section>
+        <c-data-clean-custom-lightning-datatable
+            key-field="relatedObjectApiNameAndRecordTypeId"
+            data={previewData.relatedObjectRecordTypeData}
+            columns={previewData.relatedObjectRecordTypeColumns}
+            hide-checkbox-column
+        >
+        </c-data-clean-custom-lightning-datatable>
+    </template>
+</template>

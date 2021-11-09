@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Configuration_Active__c</fullName>
+    <defaultValue>true</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Indicate that the current Data Clean Configuration is Active if TRUE, inactive if FALSE. There can only be one configuration active per object</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Indicate that the current Data Clean Configuration is Active if TRUE, inactive if FALSE. There can only be one configuration active per object</inlineHelpText>
+    <label>Is Configuration Active</label>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

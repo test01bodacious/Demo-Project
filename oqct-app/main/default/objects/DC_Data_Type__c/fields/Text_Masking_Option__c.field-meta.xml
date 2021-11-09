@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Text_Masking_Option__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Masking pattern option available for text type of data</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Masking pattern option available for text type of data</inlineHelpText>
+    <label>Text Masking Option</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Data_Clean_Data_Type_Text_Mask_Options</valueSetName>
+    </valueSet>
+</CustomField>

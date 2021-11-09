@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Child_Job_Not_Completed_Deletion__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Total number of deletion Child Jobs which are not completed</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Total number of deletion Child Jobs which are not completed</inlineHelpText>
+    <label>Total Child Job Not Completed (Deletion)</label>
+    <summaryFilterItems>
+        <field>DC_Result__c.Is_Child_Job_Completed__c</field>
+        <operation>equals</operation>
+        <value>False</value>
+    </summaryFilterItems>
+    <summaryFilterItems>
+        <field>DC_Result__c.Process__c</field>
+        <operation>equals</operation>
+        <value>Deletion</value>
+    </summaryFilterItems>
+    <summaryForeignKey>DC_Result__c.DC_Configuration__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

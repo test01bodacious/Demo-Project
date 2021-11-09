@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Masking</fullName>
+        <default>false</default>
+        <label>Masking</label>
+    </customValue>
+    <customValue>
+        <fullName>Deletion</fullName>
+        <default>false</default>
+        <label>Deletion</label>
+    </customValue>
+    <customValue>
+        <fullName>Archive</fullName>
+        <default>false</default>
+        <label>Archive</label>
+    </customValue>
+    <customValue>
+        <fullName>Rollback</fullName>
+        <default>false</default>
+        <label>Rollback</label>
+    </customValue>
+    <customValue>
+        <fullName>Cloning</fullName>
+        <default>false</default>
+        <label>Cloning</label>
+    </customValue>
+    <description>The process/actions for Data Clean App</description>
+    <masterLabel>Data Clean Processes</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

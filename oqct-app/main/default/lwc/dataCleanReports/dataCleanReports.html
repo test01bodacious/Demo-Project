@@ -1,0 +1,193 @@
+<!--
+  @description       : NA
+  @author            : Krrish Joy
+  @group             : OQCT Limited
+  @last modified on  : 2021-02-18
+  @last modified by  : Krrish Joy
+  Modifications Log 
+  Ver   Date         Author         Modification
+  1.0   2020-11-16   Krrish Joy   Initial Version
+-->
+<template>
+    <template if:true={isDataCleanReportData}>
+        <c-data-clean-card>
+            <p slot="title">{cardTitle}</p>
+            <span>
+                <div class="slds-p-bottom_large">
+                    <lightning-breadcrumbs>
+                        <template for:each={breadcrumbs} for:item="crumbs">
+                            <lightning-breadcrumb
+                                key={crumbs.id}
+                                label={crumbs.label}
+                                name={crumbs.name}
+                                onclick={handleNavigateFromBreadcrumb}
+                            >
+                            </lightning-breadcrumb>
+                        </template>
+                    </lightning-breadcrumbs>
+                </div>
+                <template if:true={showDataCleanResults}>
+                    <c-data-clean-datatable-client-side
+                        data-id="dataCleanResultTable"
+                        key-field="id"
+                        table-data={dataCleanReportData}
+                        columns={dataCleanReportColumns}
+                        records-per-page={recordsPerPage}
+                        onrowselection={handleRowSelection}
+                        onnavigationlinkclick={handleNavigationLinkClick}
+                    ></c-data-clean-datatable-client-side>
+                </template>
+                <template if:true={showDataCleanFiles}>
+                    <template if:true={isDataCleanFileData}>
+                        <c-data-clean-datatable-client-side
+                            data-id="dataCleanFileTable"
+                            key-field="id"
+                            table-data={dataCleanFileData}
+                            columns={dataCleanFileColumns}
+                            records-per-page={recordsPerPage}
+                            onrowselection={handleRowSelection}
+                            onnavigationlinkclick={handleNavigationLinkClick}
+                        ></c-data-clean-datatable-client-side>
+                    </template>
+                    <template if:false={isDataCleanFileData}>
+                        <div class="listViewContainer">
+                            <div
+                                class="slds-p-around_medium"
+                                style="height: 100px"
+                            >
+                                <div
+                                    class="slds-box slds-align_absolute-center"
+                                >
+                                    <c-data-clean-alert-message
+                                        hide-close-button={hideCloseButtonOnNoData}
+                                    >
+                                        {noDataMessage}
+                                    </c-data-clean-alert-message>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </template>
+                <template if:true={isLoading}>
+                    <div class="listViewContainer">
+                        <lightning-spinner
+                            alternative-text="Loading"
+                            variant="brand"
+                        ></lightning-spinner>
+                    </div>
+                </template>
+            </span>
+            <span slot="actions">
+                <template if:true={showBackAction}>
+                    <lightning-button
+                        class="slds-p-left_medium"
+                        label="Back"
+                        title="Back"
+                        variant="brand-outline"
+                        onclick={handleBackClick}
+                    ></lightning-button>
+                </template>
+                <lightning-button
+                    class="slds-p-left_medium"
+                    label={filterButtonName}
+                    title={filterButtonName}
+                    variant="brand-outline"
+                    icon-name="utility:filterList"
+                    icon-position="right"
+                    onclick={handleFilterClick}
+                ></lightning-button>
+                <lightning-button
+                    class="slds-p-left_medium"
+                    label="Export"
+                    title="Export"
+                    variant="brand-outline"
+                    onclick={handleExportClick}
+                ></lightning-button>
+                <lightning-button
+                    class="slds-p-left_medium"
+                    label="Refresh"
+                    title="Refresh"
+                    variant="brand-outline"
+                    icon-name="utility:refresh"
+                    icon-position="right"
+                    onclick={handleRefreshClick}
+                ></lightning-button>
+            </span>
+        </c-data-clean-card>
+        <c-data-clean-modal header="Data Clean Reports" data-id="previewModal">
+            <p class="slds-p-left_x-large">Content Here</p>
+            <span slot="footer">
+                <div class="slds-align_absolute-center" style="height: 3rem">
+                    <lightning-layout
+                        horizontal-align="center"
+                        vertical-align="center"
+                    >
+                        <lightning-layout-item padding="around-small">
+                            <lightning-button
+                                label="Close"
+                                title="Close"
+                                variant="brand-outline"
+                                onclick={handleCloseClickOnPreviewModal}
+                            ></lightning-button
+                        ></lightning-layout-item>
+                    </lightning-layout>
+                </div>
+            </span>
+        </c-data-clean-modal>
+    </template>
+
+    <c-data-clean-filter-modal
+        data-id="filterModal"
+        filters={filters}
+        filter-columns={filterColumns}
+        onsave={handleSaveFilter}
+    >
+    </c-data-clean-filter-modal>
+
+    <template if:false={isDataCleanReportData}>
+        <div class="listViewContainer">
+            <template if:true={isLoading}>
+                <c-data-clean-stencil
+                    iterations="4"
+                    columns="4"
+                ></c-data-clean-stencil>
+            </template>
+            <template if:false={isLoading}>
+                <c-data-clean-card>
+                    <p slot="title">Data Clean Reports</p>
+                    <span>
+                        <div class="slds-p-around_medium" style="height: 100px">
+                            <div class="slds-box slds-align_absolute-center">
+                                <c-data-clean-alert-message
+                                    hide-close-button={hideCloseButtonOnNoData}
+                                >
+                                    {noDataMessage}
+                                </c-data-clean-alert-message>
+                            </div>
+                        </div>
+                    </span>
+                    <span slot="actions">
+                        <lightning-button
+                            class="slds-p-left_medium"
+                            label={filterButtonName}
+                            title={filterButtonName}
+                            variant="brand-outline"
+                            icon-name="utility:filterList"
+                            icon-position="right"
+                            onclick={handleFilterClick}
+                        ></lightning-button>
+                        <lightning-button
+                            class="slds-p-left_medium"
+                            label="Refresh"
+                            title="Refresh"
+                            variant="brand-outline"
+                            icon-name="utility:refresh"
+                            icon-position="right"
+                            onclick={handleRefreshClick}
+                        ></lightning-button>
+                    </span>
+                </c-data-clean-card>
+            </template>
+        </div>
+    </template>
+</template>

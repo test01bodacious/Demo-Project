@@ -1,0 +1,56 @@
+<!--
+  @description       : NA
+  @author            : Krrish Joy
+  @group             : OQCT Limited
+  @last modified on  : 2021-02-18
+  @last modified by  : Krrish Joy
+  Modifications Log 
+  Ver   Date         Author         Modification
+  1.0   2021-01-12   Krrish Joy   Initial Version
+-->
+<template>
+    <div class="slds-section slds-is-open">
+        <template if:true={collapsible}>
+            <h3 class="slds-section__title" onclick={handleSectionClick}>
+                <button
+                    aria-controls="expando-unique-id"
+                    aria-expanded="true"
+                    class="slds-button slds-section__title-action"
+                >
+                    <lightning-icon
+                        icon-name={sectionIconName}
+                        alternative-text={sectionButtonName}
+                        title={sectionButtonName}
+                        size="x-small"
+                    >
+                    </lightning-icon>
+                    <span
+                        class="slds-truncate slds-m-left_small"
+                        title="Section Title"
+                        >{sectionTitle}
+                    </span>
+                </button>
+            </h3>
+        </template>
+        <template if:false={collapsible}>
+            <h3 class="slds-section__title slds-theme_shade">
+                <span
+                    class="slds-truncate slds-p-horizontal_small"
+                    title="Section Title"
+                    >{sectionTitle}</span
+                >
+            </h3>
+        </template>
+        <div
+            aria-hidden="false"
+            class="slds-section__content"
+            id="expando-unique-id"
+        >
+            <template if:false={isCollapsed}>
+                <p class="slds-p-left_medium">
+                    <slot></slot>
+                </p>
+            </template>
+        </div>
+    </div>
+</template>

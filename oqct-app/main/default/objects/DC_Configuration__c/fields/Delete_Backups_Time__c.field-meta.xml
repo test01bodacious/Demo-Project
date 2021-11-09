@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Delete_Backups_Time__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Preferred start time when the auto-deletion of backups will be done</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Preferred start time when the auto-deletion of backups will be done</inlineHelpText>
+    <label>Delete Backups Time</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Time</type>
+</CustomField>

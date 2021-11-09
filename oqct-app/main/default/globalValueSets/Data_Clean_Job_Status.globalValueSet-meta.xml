@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Queued</fullName>
+        <default>true</default>
+        <label>Queued</label>
+    </customValue>
+    <customValue>
+        <fullName>Processing</fullName>
+        <default>false</default>
+        <label>Processing</label>
+    </customValue>
+    <customValue>
+        <fullName>Masking Child Records</fullName>
+        <default>false</default>
+        <label>Masking Child Records</label>
+    </customValue>
+    <customValue>
+        <fullName>Masking Parent Records</fullName>
+        <default>false</default>
+        <label>Masking Parent Records</label>
+    </customValue>
+    <customValue>
+        <fullName>Deleting Child Records</fullName>
+        <default>false</default>
+        <label>Deleting Child Records</label>
+    </customValue>
+    <customValue>
+        <fullName>Deleting Parent Records</fullName>
+        <default>false</default>
+        <label>Deleting Parent Records</label>
+    </customValue>
+    <customValue>
+        <fullName>Archiving Child Records</fullName>
+        <default>false</default>
+        <label>Archiving Child Records</label>
+    </customValue>
+    <customValue>
+        <fullName>Archiving Parent Records</fullName>
+        <default>false</default>
+        <label>Archiving Parent Records</label>
+    </customValue>
+    <customValue>
+        <fullName>Rollbacking Child Records</fullName>
+        <default>false</default>
+        <label>Rollbacking Child Records</label>
+    </customValue>
+    <customValue>
+        <fullName>Rollbacking Parent Records</fullName>
+        <default>false</default>
+        <label>Rollbacking Parent Records</label>
+    </customValue>
+    <customValue>
+        <fullName>Cloning Child Records</fullName>
+        <default>false</default>
+        <label>Cloning Child Records</label>
+    </customValue>
+    <customValue>
+        <fullName>Cloning Parent Records</fullName>
+        <default>false</default>
+        <label>Cloning Parent Records</label>
+    </customValue>
+    <customValue>
+        <fullName>Completed</fullName>
+        <default>false</default>
+        <label>Completed</label>
+    </customValue>
+    <customValue>
+        <fullName>Aborted</fullName>
+        <default>false</default>
+        <label>Aborted</label>
+    </customValue>
+    <description>The status/progress of the process</description>
+    <masterLabel>Data Clean Job Status</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

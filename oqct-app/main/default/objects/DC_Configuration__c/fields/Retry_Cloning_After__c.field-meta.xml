@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Retry_Cloning_After__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Re-try frequency after span for failed/new pending records cloning</description>
+    <externalId>false</externalId>
+    <formula>IF(
+    !CONTAINS(TEXT(Data_Clean_Action__c), &apos;Cloning&apos;),
+    null,
+    Retry_Process_After__c
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Re-try frequency after span for failed/new pending records cloning</inlineHelpText>
+    <label>Retry Cloning After</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

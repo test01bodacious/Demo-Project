@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Related_Object_Name__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The related/child object name of Master object record associated with the corresponding Data Clean record whose result the Data Clean Related Result record will track</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The related/child object name of Master object record associated with the corresponding Data Clean record whose result the Data Clean Related Result record will track</inlineHelpText>
+    <label>Related Object Name</label>
+    <length>255</length>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

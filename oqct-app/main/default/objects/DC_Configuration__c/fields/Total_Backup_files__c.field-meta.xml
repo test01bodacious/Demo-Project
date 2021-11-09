@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Backup_files__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The total number of backup files associated with all the results</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The total number of backup files associated with all the results</inlineHelpText>
+    <label>Total Backup files</label>
+    <summarizedField>DC_Result__c.Total_Backup_files__c</summarizedField>
+    <summaryForeignKey>DC_Result__c.DC_Configuration__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

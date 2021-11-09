@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Tab for Data Clean Data Types</description>
+    <flexiPage>DC_Data_Types</flexiPage>
+    <label>DC-Data Types</label>
+    <motif>Custom18: Form</motif>
+</CustomTab>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <brand>
+        <headerColor>#812BF1</headerColor>
+        <logo>Data_Clean_Logo</logo>
+        <logoVersion>1</logoVersion>
+        <shouldOverrideOrgTheme>true</shouldOverrideOrgTheme>
+    </brand>
+    <description>Mask, Archive (Backup), Delete Production Customer Data and Comply with Data Privacy Laws using Data Clean App</description>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <label>Data Clean</label>
+    <navType>Standard</navType>
+    <tabs>DC_Home</tabs>
+    <tabs>Data_Clean__c</tabs>
+    <tabs>Data_Clean_Configurations</tabs>
+    <tabs>DC_Job_Status</tabs>
+    <tabs>DC_Rollback</tabs>
+    <tabs>DC_Files_Cleanup</tabs>
+    <tabs>DC_Data_Types</tabs>
+    <tabs>Data_Clean_App_Configurations__c</tabs>
+    <tabs>DC_Reports</tabs>
+    <tabs>standard-File</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>Data_Clean_UtilityBar</utilityBar>
+</CustomApplication>

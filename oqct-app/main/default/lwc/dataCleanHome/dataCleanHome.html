@@ -1,0 +1,42 @@
+<!--
+  @description       : NA
+  @author            : Krrish Joy
+  @group             : OQCT Limited
+  @last modified on  : 2021-02-18
+  @last modified by  : Krrish Joy
+  Modifications Log 
+  Ver   Date         Author         Modification
+  1.0   2020-11-10   Krrish Joy   Initial Version
+-->
+<template>
+    <div>
+        <c-data-clean-card>
+            <p slot="title">Data Clean Read Me Info</p>
+            <span>
+                <c-data-clean-read-me></c-data-clean-read-me>
+            </span>
+        </c-data-clean-card>
+    </div>
+    <div class="slds-m-top_medium">
+        <c-data-clean-card>
+            <p slot="title">Data Clean Upcoming Jobs</p>
+            <span>
+                <c-data-clean-job-status is-home></c-data-clean-job-status>
+            </span>
+            <template if:true={isMoreActiveJob}>
+                <span slot="footer">
+                    <div
+                        class="slds-grid slds-p-around_small slds-grid_align-center"
+                    >
+                        <c-data-clean-navigation
+                            label="View All"
+                            title="View All"
+                            type="standard__navItemPage"
+                            api-name="OQCT_DaCl__DC_Job_Status"
+                        ></c-data-clean-navigation>
+                    </div>
+                </span>
+            </template>
+        </c-data-clean-card>
+    </div>
+</template>

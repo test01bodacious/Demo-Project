@@ -1,0 +1,63 @@
+<!--
+  @description       : 
+  @author            : Krrish Joy
+  @group             : OQCT.com Limited
+  @last modified on  : 2021-02-06
+  @last modified by  : Krrish Joy
+  Modifications Log 
+  Ver   Date         Author       Modification
+  1.0   2021-02-05   Krrish Joy   Initial Version
+-->
+<template>
+    <c-data-clean-modal
+        modal-overflow
+        header="Add Filters"
+        data-id="filterModal"
+    >
+        <p class="slds-p-left_x-large">
+            <c-data-clean-filter filters={filters} columns={filterColumns}>
+            </c-data-clean-filter>
+        </p>
+        <span slot="footer">
+            <div class="slds-align_absolute-center" style="height: 3rem">
+                <lightning-layout
+                    horizontal-align="center"
+                    vertical-align="center"
+                >
+                    <lightning-layout-item padding="around-small">
+                        <lightning-button
+                            label="Cancel"
+                            title="Cancel"
+                            variant="brand-outline"
+                            onclick={handleCancel}
+                        ></lightning-button
+                    ></lightning-layout-item>
+                    <lightning-layout-item padding="around-small">
+                        <lightning-button
+                            label="Clear All Filters"
+                            title="Clear All Filters"
+                            variant="destructive-text"
+                            onclick={handleClearAllFilters}
+                        ></lightning-button
+                    ></lightning-layout-item>
+                    <lightning-layout-item padding="around-small">
+                        <lightning-button
+                            label="Add New Filter"
+                            title="Add New Filter Condition"
+                            variant="brand-outline"
+                            onclick={handleAddNewFilter}
+                        ></lightning-button
+                    ></lightning-layout-item>
+                    <lightning-layout-item padding="around-small">
+                        <lightning-button
+                            label="Save Filter"
+                            title="Save Filter"
+                            variant="brand"
+                            onclick={handleSave}
+                        ></lightning-button>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+        </span>
+    </c-data-clean-modal>
+</template>

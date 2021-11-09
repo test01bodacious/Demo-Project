@@ -1,0 +1,160 @@
+/* render() methhod require to reference CSS from an extra template, 
+the CSS filename must match the filename of the extra template */
+
+.placeholder .body {
+	padding: 1.5rem
+}
+.placeholder .icon {
+	width: 2rem;
+	height: 2rem;
+	background-color: #ecebea;
+	border-radius: .25rem;
+	margin-right: .75rem;
+	display: inline-block
+}
+.placeholder .icon-large {
+	width: 3rem;
+	height: 3rem;
+	margin: 0px 10px 10px 0px;
+}
+.placeholder .icon-medium {
+	width: 2rem;
+	height: 2rem;
+	margin: 0px 10px 10px 0px;
+}
+.placeholder .icon-round-large {
+	width: 3rem;
+	height: 3rem;
+	border-radius: 50%;
+	margin: 0px 10px 10px 0px;
+}
+.placeholder .text-body {
+	margin-bottom: 10px;
+	width: 70%;
+	height: 100%
+}
+.placeholder .text {
+	border-radius: 15rem;
+	display: block;
+	margin-bottom: .75rem;
+	background-color: #ecebea;
+	height: .5rem
+}
+.placeholder .text:last-child {
+	margin-bottom: 0
+}
+.placeholder .text-thin {
+	height: 6px;
+	border-radius: 15rem
+}
+.placeholder .text-thinnest {
+	height: 10px;
+	border-radius: 15rem
+}
+.placeholder .text-thinner {
+	height: 4px;
+	margin: 10px 0;
+	border-radius: .125rem
+}
+.placeholder .text-long {
+	width: 80%
+}
+.placeholder .text-longer {
+	width: 100%
+}
+.placeholder .text-medium {
+	width: 60%
+}
+.placeholder .text-short {
+	width: 45%
+}
+.placeholder .text-shorter {
+	width: 20%
+}
+.placeholder .body,
+.placeholder .card {
+	background-color: #fff;
+}
+.placeholder .icon,
+.placeholder .custom-header-image,
+.placeholder .text {
+	background-color: #ecebea;
+	background-image: linear-gradient(90deg, #ecebea 0px, #d1d1d1 40px, #ecebea 100px) ;
+  	background-size: 900px;
+	animation: shine-lines 1s infinite linear;
+}
+.placeholder .card {
+	border: 1px solid #f3f2f2;
+	border-radius: .25rem
+}
+.placeholder .card .custom-header-image {
+    background-position: center;
+    background-size: auto;
+    border-radius: 5px 5px 0 0; 
+    width:100%;
+    height:145px;
+	background-color: #ecebea;
+	margin-bottom: 12px
+}
+.placeholder .flex-grid {
+	display: flex
+}
+.placeholder .flex-h-center {
+	justify-content: center
+}
+.placeholder .flex-v-center {
+	align-items: center;
+}
+.placeholder.detail {
+	background-color: #fff;
+	border-radius: 0.25rem;
+}
+.placeholder.detail .right-column {
+	display: block
+}
+.placeholder.detail .field {
+	padding: 1rem 1rem
+}
+.placeholder.detail .text-secondary {
+	background-color: #ecebea
+}
+.placeholder.detail .field:nth-child(even) .text-secondary {
+	width: 33%
+}
+.placeholder.feed {
+	height: 100%;
+	width: 100%;
+}
+.placeholder.feed .card {
+	width: 100%;
+	padding: 1rem;
+	border-radius: .25rem
+}
+.placeholder.feed .card .text {
+	margin: 12px 0px 0px;
+}
+.placeholder.feed .card .text-body:nth-child(odd) {
+	width: 100%
+}
+.placeholder.feed .card .actions {
+	border-top: 1px solid #f3f2f2;
+	padding: 1rem 0 0.5rem
+}
+.placeholder.feed .card .actions .text {
+	float: left;
+	margin: 0
+}
+.placeholder.feed .card .actions .text:last-child {
+	float: right
+}
+.placeholder.feed .card:nth-child(even) .text-shorter {
+	width: 15%
+}
+@keyframes shine-lines{
+	0% {
+		background-position: -20px
+	}
+	100%{
+		background-position: 400px
+	}
+}

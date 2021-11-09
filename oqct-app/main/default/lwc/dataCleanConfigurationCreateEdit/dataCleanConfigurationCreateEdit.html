@@ -1,0 +1,811 @@
+<!--
+  @description       : NA
+  @author            : Krrish Joy
+  @group             : OQCT Limited
+  @last modified on  : 2021-03-25
+  @last modified by  : Krrish Joy
+  Modifications Log 
+  Ver   Date         Author         Modification
+  1.0   2020-11-16   Krrish Joy   Initial Version
+-->
+<template>
+    <c-data-clean-card align-heading-center="true">
+        <!-- Heading -->
+        <p slot="title">{cardHeading}</p>
+
+        <!-- Action -->
+        <!-- <span slot="actions">
+            <lightning-button
+                label="New"
+                variant="brand-outline"
+            ></lightning-button>
+        </span> -->
+
+        <!-- Body -->
+        <span>
+            <!-- Progress Indicator -->
+            <lightning-progress-indicator
+                type="path"
+                variant="shaded"
+                current-step={progressIndicatorCurrentStep}
+            >
+                <template
+                    for:each={progressIndiacatorSteps}
+                    for:item="progressIndiacatorStep"
+                >
+                    <lightning-progress-step
+                        label={progressIndiacatorStep.label}
+                        value={progressIndiacatorStep.value}
+                        key={progressIndiacatorStep.value}
+                        onclick={handleProgressStepClick}
+                    ></lightning-progress-step>
+                </template>
+            </lightning-progress-indicator>
+
+            <template if:true={alerts.topOfStep}>
+                <div class="slds-p-around_medium">
+                    <c-data-clean-alert-message
+                        type="success"
+                        data-id="topOfStep"
+                        onclosealert={handleCloseAlert}
+                        hide-close-button
+                    >
+                        You are performing "{actionValue}" on object
+                        "{selectedObject}" by matching field
+                        "{selectedMatchByField}"
+                    </c-data-clean-alert-message>
+                </div>
+            </template>
+
+            <!-- Steps -->
+            <div class="slds-p-around_medium">
+                <!-- Step 1 -->
+                <template if:true={steps.step1}>
+                    <div class="slds-align_absolute-center">
+                        <lightning-radio-group
+                            name="selectAction"
+                            label=""
+                            variant="label-hidden"
+                            options={actionOptions}
+                            value={actionValue}
+                            onchange={handleActionValueChange}
+                            type="radio"
+                            required
+                            disabled={isEditMode}
+                            style="font-size: x-large"
+                        ></lightning-radio-group>
+                    </div>
+                </template>
+
+                <!-- Step 2 -->
+                <template if:true={steps.step2}>
+                    <div class="slds-align_absolute-center">
+                        <div>
+                            <lightning-combobox
+                                name="object"
+                                label="Select Object"
+                                value={selectedObject}
+                                placeholder="Select Object"
+                                options={allObjectOptions}
+                                onchange={handleObjectChange}
+                                disabled={isEditMode}
+                                required
+                            ></lightning-combobox>
+                            <br />
+                            <lightning-combobox
+                                name="matchByField"
+                                label="Select Match By Field"
+                                value={selectedMatchByField}
+                                placeholder="Select Match By Field"
+                                options={potentialExternalIdFieldsOptions}
+                                onchange={handleMatchByFieldChange}
+                                disabled={isEditMode}
+                                required
+                            ></lightning-combobox>
+                        </div>
+                    </div>
+                </template>
+
+                <!-- Step 3 -->
+                <template if:true={steps.step3}>
+                    <c-data-clean-custom-lightning-datatable
+                        key-field="recordTypeId"
+                        data={recordTypeData}
+                        columns={recordTypeColumns}
+                        onrowaction={handleRowActionStep3}
+                        ontogglechange={handleToggleChangeStep3}
+                        hide-checkbox-column
+                    >
+                    </c-data-clean-custom-lightning-datatable>
+                </template>
+
+                <!-- Step 4 -->
+                <template if:true={steps.step4}>
+                    <lightning-layout horizontal-align="center">
+                        <lightning-layout-item padding="around-small">
+                            <lightning-formatted-text
+                                value={step4LabelDoYouWantToProcessRelatedObjects}
+                            ></lightning-formatted-text>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                    <lightning-layout horizontal-align="center">
+                        <lightning-layout-item padding="around-small">
+                            <lightning-input
+                                type="toggle"
+                                label=""
+                                variant="label-hidden"
+                                message-toggle-active="Yes"
+                                message-toggle-inactive="No"
+                                checked={addRelatedObjectsFlag}
+                                style="margin-left: 16%; margin-top: 15px"
+                                disabled={isEditMode}
+                                onchange={handleAddRelatedObjectsFlagChange}
+                            >
+                            </lightning-input>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                    <template if:true={addRelatedObjectsFlag}>
+                        <lightning-layout
+                            horizontal-align="center"
+                            multiple-rows="true"
+                        >
+                            <template if:true={isMaskOrArchiveAction}>
+                                <lightning-layout-item
+                                    flexibility="auto"
+                                    padding="around-small"
+                                >
+                                    Select Related Objects for
+                                    {processNameLabel}
+                                    <c-data-clean-searchable-lightning-dual-listbox
+                                        all-options={relatedObjectMaskingOptions}
+                                        selected-values={selectedRelatedObjectMaskingValues}
+                                        is-loading={spinners.isRelatedObjectMaskingSelectorDualListBoxLoading}
+                                        data-id="relatedObjectMaskingOptions"
+                                        disabled={isEditMode}
+                                    ></c-data-clean-searchable-lightning-dual-listbox>
+                                </lightning-layout-item>
+                            </template>
+                            <template if:true={isDeleteAction}>
+                                <lightning-layout-item
+                                    flexibility="auto"
+                                    padding="around-small"
+                                >
+                                    Select Related Objects for Deletion
+                                    <c-data-clean-searchable-lightning-dual-listbox
+                                        all-options={relatedObjectDeletionOptions}
+                                        selected-values={selectedRelatedObjectDeletionValues}
+                                        is-loading={spinners.isRelatedObjectDeletionSelectorDualListBoxLoading}
+                                        data-id="relatedObjectDeletionOptions"
+                                        disabled={isEditMode}
+                                    ></c-data-clean-searchable-lightning-dual-listbox>
+                                </lightning-layout-item>
+                            </template>
+                        </lightning-layout>
+                    </template>
+                </template>
+
+                <!-- Step 5 -->
+                <template if:true={steps.step5}>
+                    <c-data-clean-custom-lightning-datatable
+                        key-field="relatedObjectApiNameAndRecordTypeId"
+                        data={relatedObjectRecordTypeData}
+                        columns={relatedObjectRecordTypeColumns}
+                        onrowaction={handleRowActionStep5}
+                        ontogglechange={handleToggleChangeStep5}
+                        hide-checkbox-column
+                    >
+                    </c-data-clean-custom-lightning-datatable>
+                </template>
+
+                <!-- Step 6 -->
+                <template if:true={steps.step6}>
+                    <div class="slds-m-bottom_small">
+                        <c-data-clean-alert-message
+                            type="warning"
+                            data-id="step6TimeInfo"
+                            onclosealert={handleCloseAlert}
+                        >
+                            All the time are specific to the user record.
+                            Salesforce schedules the class for execution at the
+                            specified time. Actual execution may be delayed
+                            based on service availability.&nbsp;
+                            <a
+                                href="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_scheduler.htm"
+                                target="_blank"
+                                >Read More...</a
+                            >
+                        </c-data-clean-alert-message>
+                    </div>
+                    <div class="slds-align_absolute-center">
+                        <div style="display: contents">
+                            Start {processNameLabel} Process After &nbsp;&nbsp;
+                            <lightning-input
+                                type="number"
+                                name="processStartAfter"
+                                variant="label-hidden"
+                                label=""
+                                value={processStartAfter}
+                                required
+                                disabled={isEditMode}
+                                onchange={handleProcessStartAfterChange}
+                            ></lightning-input
+                            >&nbsp;&nbsp;
+                            <lightning-combobox
+                                name="processStartUnit"
+                                label=""
+                                variant="label-hidden"
+                                options={processStartUnitOptions}
+                                value={processStartUnitValue}
+                                onchange={handleProcessStartUnitChange}
+                                required
+                                disabled={isEditMode}
+                            ></lightning-combobox
+                            >&nbsp;&nbsp;
+                            <lightning-formatted-text
+                                value="At"
+                            ></lightning-formatted-text>
+                            &nbsp;&nbsp;
+                            <lightning-input
+                                type="time"
+                                name="processStartTime"
+                                label=""
+                                variant="label-hidden"
+                                value={processStartTime}
+                                required
+                                disabled={isEditMode}
+                                onchange={handleProcessStartTimeChange}
+                            ></lightning-input>
+                            &nbsp;&nbsp; from Data Clean record Insertion Date
+                        </div>
+                    </div>
+                    <template if:true={isBackupAction}>
+                        <br />
+                        <div class="slds-align_absolute-center">
+                            <div style="display: contents">
+                                <lightning-formatted-text
+                                    value="Auto-Delete backup files After"
+                                ></lightning-formatted-text>
+                                &nbsp;&nbsp;
+                                <lightning-input
+                                    type="number"
+                                    name="deleteBackupsAfter"
+                                    variant="label-hidden"
+                                    label=""
+                                    value={deleteBackupsAfter}
+                                    required
+                                    disabled={isEditMode}
+                                    onchange={handleDeleteBackupsAfterChange}
+                                ></lightning-input
+                                >&nbsp;&nbsp;
+                                <lightning-combobox
+                                    name="deleteBackupsUnit"
+                                    label=""
+                                    variant="label-hidden"
+                                    options={deleteBackupsUnitOptions}
+                                    value={deleteBackupsUnitValue}
+                                    onchange={handleDeleteBackupsUnitChange}
+                                    disabled={isEditMode}
+                                    required
+                                ></lightning-combobox
+                                >&nbsp;&nbsp;
+                                <lightning-formatted-text
+                                    value="At"
+                                ></lightning-formatted-text>
+                                &nbsp;&nbsp;
+                                <lightning-input
+                                    type="time"
+                                    name="deleteBackupsTime"
+                                    label=""
+                                    variant="label-hidden"
+                                    value={deleteBackupsTime}
+                                    required
+                                    disabled={isEditMode}
+                                    onchange={handleDeleteBackupsTimeChange}
+                                ></lightning-input>
+                                &nbsp;&nbsp; from {processNameLabel} completion
+                                date
+                            </div>
+                        </div>
+                    </template>
+                    <template if:true={isPostDeleteAction}>
+                        <br />
+                        <div class="slds-align_absolute-center">
+                            <div style="display: contents">
+                                <lightning-formatted-text
+                                    style="padding-left: 28px"
+                                    value="Start Delete Process After"
+                                ></lightning-formatted-text>
+                                &nbsp;&nbsp;
+                                <lightning-input
+                                    type="number"
+                                    name="process2StartAfter"
+                                    variant="label-hidden"
+                                    label=""
+                                    value={process2StartAfter}
+                                    required
+                                    disabled={isEditMode}
+                                    onchange={handleProcess2StartAfterChange}
+                                ></lightning-input
+                                >&nbsp;&nbsp;
+                                <lightning-combobox
+                                    name="process2StartUnit"
+                                    label=""
+                                    variant="label-hidden"
+                                    options={process2StartUnitOptions}
+                                    value={process2StartUnitValue}
+                                    onchange={handleProcess2StartUnitChange}
+                                    required
+                                    disabled={isEditMode}
+                                ></lightning-combobox
+                                >&nbsp;&nbsp;
+                                <lightning-formatted-text
+                                    value="At"
+                                ></lightning-formatted-text>
+                                &nbsp;&nbsp;
+                                <lightning-input
+                                    type="time"
+                                    name="process2StartTime"
+                                    label=""
+                                    variant="label-hidden"
+                                    value={process2StartTime}
+                                    required
+                                    disabled={isEditMode}
+                                    onchange={handleProcess2StartTimeChange}
+                                ></lightning-input>
+                                &nbsp;&nbsp; from {processNameLabel} completion
+                                date
+                            </div>
+                        </div>
+                    </template>
+                    <br />
+                    <div class="slds-align_absolute-center">
+                        <a
+                            href="javascript:void(0);"
+                            onclick={handleSeeExampleClick}
+                            >See Example</a
+                        >
+                        <c-data-clean-confirmation-prompt
+                            data-id="exampleInfo"
+                            type="error-prompt"
+                            show-confirm-button-panel={showConfirmButttonPanelOnStep6Example}
+                            onconfirm={handleConfirmExampleStep6}
+                            prompt-heading="Example of the Process"
+                        >
+                            <span>
+                                <div class="slds-m-bottom_small">
+                                    <c-data-clean-alert-message
+                                        type="warning"
+                                        data-id="step6TimeInfoConfirmationPrompt"
+                                        hide-close-button
+                                    >
+                                        All the time are specific to the user
+                                        record. Salesforce schedules the class
+                                        for execution at the specified time.
+                                        Actual execution may be delayed based on
+                                        service availability.&nbsp;
+                                        <a
+                                            href="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_scheduler.htm"
+                                            target="_blank"
+                                            >Read More...</a
+                                        >
+                                    </c-data-clean-alert-message>
+                                </div>
+                                The following scenario is based on the values
+                                selected. Please review it carefully before
+                                proceeding further:<br /><br />
+
+                                <div class="slds-text-longform">
+                                    <ul>
+                                        <li>
+                                            If you insert Data Clean Records
+                                            on&nbsp;
+                                            <span style="color: green"
+                                                >{exampleDataCleanInsertDate}</span
+                                            >, the {processNameLabel} process
+                                            will start on&nbsp;<span
+                                                style="color: green"
+                                                >{exampleProcessStartDate}</span
+                                            >
+                                        </li>
+                                        <template if:true={isBackupAction}>
+                                            <li>
+                                                The backups will expire
+                                                on&nbsp;<span
+                                                    style="color: blue"
+                                                    >{exampleBackupexpieryDate}</span
+                                                >&nbsp;as an automatic process
+                                                will delete all backups taken
+                                                during the {processNameLabel}
+                                                process. If you wish to take
+                                                rollback, you need to do it
+                                                before&nbsp;<span
+                                                    style="color: blue"
+                                                    >{exampleBackupexpieryDate}</span
+                                                >
+                                            </li>
+                                        </template>
+                                        <template if:true={isPostDeleteAction}>
+                                            <li>
+                                                After Masking, records which are
+                                                successfully masked will be
+                                                scheduled for deletion
+                                                on&nbsp;<span style="color: red"
+                                                    >{postMaskingDeletionDate}</span
+                                                >
+                                            </li>
+                                        </template>
+                                    </ul>
+                                    <br />
+                                    <ul>
+                                        <template if:true={retryProcess}>
+                                            <li>
+                                                If any records are failed during
+                                                Masking process, data clean app
+                                                will retry masking on&nbsp;<span
+                                                    style="color: green"
+                                                    >{maskRetryDate}</span
+                                                >&nbsp;and keep retrying
+                                                every&nbsp;{retryProcessAfter}&nbsp;{retryProcessUnitValue}
+                                            </li>
+                                        </template>
+                                        <template if:true={retryProcess2}>
+                                            <li>
+                                                If any records are failed during
+                                                Deletion process, data clean app
+                                                will retry deletion
+                                                on&nbsp;<span style="color: red"
+                                                    >{deleteRetryDate}</span
+                                                >&nbsp;and keep retrying
+                                                every&nbsp;{retryProcess2After}&nbsp;{retryProcess2UnitValue}
+                                            </li>
+                                        </template>
+                                    </ul>
+                                </div>
+                            </span>
+                        </c-data-clean-confirmation-prompt>
+                    </div>
+                    <br />
+                    <div class="slds-align_absolute-center">
+                        <div style="display: contents">
+                            <lightning-formatted-text
+                                value={step6LabelDoYouWantToRepeatProcess}
+                            ></lightning-formatted-text>
+                            &nbsp;&nbsp;
+                            <c-data-clean-toggle-button
+                                checked={retryProcess}
+                                show-toggle-on-off-text
+                                toggle-on-text="Yes"
+                                toggle-off-text="No"
+                                toggle-color="green"
+                                style="margin-top: 10px"
+                                button-disabled={isEditMode}
+                                ontogglechange={handleToggleChangeStep6Process}
+                            >
+                            </c-data-clean-toggle-button>
+                        </div>
+                    </div>
+                    <template if:true={retryProcess}>
+                        <br />
+                        <div class="slds-align_absolute-center">
+                            <div style="display: contents">
+                                <lightning-formatted-text
+                                    value={step6LabelRetryProcessEvery}
+                                    style="padding-left: 60px"
+                                ></lightning-formatted-text>
+                                &nbsp;&nbsp;
+                                <lightning-input
+                                    type="number"
+                                    name="retryProcessAfter"
+                                    variant="label-hidden"
+                                    label=""
+                                    value={retryProcessAfter}
+                                    required
+                                    disabled={isEditMode}
+                                    onchange={handleRetryProcessAfterChange}
+                                ></lightning-input
+                                >&nbsp;&nbsp;
+                                <lightning-combobox
+                                    name="retryProcessUnit"
+                                    label=""
+                                    variant="label-hidden"
+                                    options={retryProcessUnitOptions}
+                                    value={retryProcessUnitValue}
+                                    onchange={handleRetryProcessUnitChange}
+                                    required
+                                    disabled={isEditMode}
+                                ></lightning-combobox>
+                            </div>
+                        </div>
+                    </template>
+                    <template if:true={isPostDeleteAction}>
+                        <br />
+                        <div class="slds-align_absolute-center">
+                            <div style="display: contents">
+                                <lightning-formatted-text
+                                    value={step6LabelDoYouWantToRepeatProcess2}
+                                ></lightning-formatted-text>
+                                &nbsp;&nbsp;
+                                <c-data-clean-toggle-button
+                                    checked={retryProcess2}
+                                    show-toggle-on-off-text
+                                    toggle-on-text="Yes"
+                                    toggle-off-text="No"
+                                    toggle-color="green"
+                                    style="margin-top: 10px"
+                                    button-disabled={isEditMode}
+                                    ontogglechange={handleToggleChangeStep6Process2}
+                                >
+                                </c-data-clean-toggle-button>
+                            </div>
+                        </div>
+                        <template if:true={retryProcess2}>
+                            <br />
+                            <div class="slds-align_absolute-center">
+                                <div style="display: contents">
+                                    <lightning-formatted-text
+                                        value={step6LabelRetryProcess2Every}
+                                        style="padding-left: 60px"
+                                    ></lightning-formatted-text>
+                                    &nbsp;&nbsp;
+                                    <lightning-input
+                                        type="number"
+                                        name="retryProcess2After"
+                                        variant="label-hidden"
+                                        label=""
+                                        value={retryProcess2After}
+                                        required
+                                        disabled={isEditMode}
+                                        onchange={handleRetryProcess2AfterChange}
+                                    ></lightning-input
+                                    >&nbsp;&nbsp;
+                                    <lightning-combobox
+                                        name="retryProcess2Unit"
+                                        label=""
+                                        variant="label-hidden"
+                                        options={retryProcess2UnitOptions}
+                                        value={retryProcess2UnitValue}
+                                        onchange={handleRetryProcess2UnitChange}
+                                        required
+                                        disabled={isEditMode}
+                                    ></lightning-combobox>
+                                </div>
+                            </div>
+                        </template>
+                    </template>
+                    <br />
+                    <div class="slds-align_absolute-center">
+                        <div style="display: contents">
+                            <lightning-formatted-text
+                                value="Do you want to receive email notification on process completion?"
+                            ></lightning-formatted-text>
+                            &nbsp;&nbsp;
+                            <c-data-clean-toggle-button
+                                checked={receiveEmailNotifications}
+                                show-toggle-on-off-text
+                                toggle-on-text="Yes"
+                                toggle-off-text="No"
+                                toggle-color="green"
+                                style="margin-top: 10px"
+                                ontogglechange={handleToggleChangeStep6ReceiveEmailNotifications}
+                            >
+                            </c-data-clean-toggle-button>
+                        </div>
+                    </div>
+                    <template if:true={receiveEmailNotifications}>
+                        <br />
+                        <div class="slds-align_absolute-center">
+                            <div style="display: contents">
+                                <lightning-textarea
+                                    name="emailIdsToNotify"
+                                    required
+                                    value={emailIdsToNotify}
+                                    field-level-help="The email will be send on process completion, rollback completion, files cleanup, configuration creation & deletion. This will include all success and error logs"
+                                    label="Enter Email Ids to Notify (Success & Errors)"
+                                    maxlength="300"
+                                    message-when-too-long="A maximum of 300 characters are allowed in for the emails."
+                                    message-when-value-missing="Complete this field."
+                                    onchange={handleEmailIdsToNotifyChange}
+                                ></lightning-textarea>
+                            </div>
+                        </div>
+                    </template>
+                    <br />
+                    <div class="slds-align_absolute-center">
+                        <div style="display: contents">
+                            <lightning-formatted-text
+                                value="Do you want to receive error emails separately?"
+                            ></lightning-formatted-text>
+                            &nbsp;&nbsp;
+                            <c-data-clean-toggle-button
+                                checked={receiveErrorEmailNotifications}
+                                show-toggle-on-off-text
+                                toggle-on-text="Yes"
+                                toggle-off-text="No"
+                                toggle-color="green"
+                                style="margin-top: 10px"
+                                ontogglechange={handleToggleChangeStep6ReceiveErrorEmailNotifications}
+                            >
+                            </c-data-clean-toggle-button>
+                        </div>
+                    </div>
+                    <template if:true={receiveErrorEmailNotifications}>
+                        <br />
+                        <div class="slds-align_absolute-center">
+                            <div style="display: contents">
+                                <lightning-textarea
+                                    name="errorEmailIdsToNotify"
+                                    required
+                                    value={errorEmailIdsToNotify}
+                                    field-level-help="The email will be receive errors reports only"
+                                    label="Enter Email Ids to Notify (Errors Only)"
+                                    maxlength="300"
+                                    message-when-too-long="A maximum of 300 characters are allowed in for the emails."
+                                    message-when-value-missing="Complete this field."
+                                    onchange={handleErrorEmailIdsToNotifyChange}
+                                ></lightning-textarea>
+                            </div>
+                        </div>
+                    </template>
+                    <br />
+                    <div class="slds-align_absolute-center">
+                        <div class="slds-form-element">
+                            <span
+                                id="rich-text-editor-unique-id-04"
+                                class="slds-form-element__label"
+                                ><b>Configuration Notes</b></span
+                            >
+                            <lightning-input-rich-text
+                                placeholder="Add Notes here..."
+                                value={configurationNotes}
+                                onchange={handleConfigurationNotesChange}
+                            >
+                            </lightning-input-rich-text>
+                        </div>
+                    </div>
+                </template>
+
+                <!-- Step 7 -->
+                <template if:true={steps.step7}>
+                    <c-data-clean-configuration-preview
+                        preview-data={previewData}
+                    ></c-data-clean-configuration-preview>
+                </template>
+            </div>
+
+            <!-- FieldSelector Modal -->
+            <template if:true={modals.fieldSelectorModal}>
+                <c-data-clean-modal header="Select Fields" size="small">
+                    <span slot="tagline">
+                        <template if:true={alerts.topOfFieldSelectorModal}>
+                            <div class="slds-p-around_medium">
+                                <c-data-clean-alert-message
+                                    type="warning"
+                                    data-id="topOfFieldSelectorModal"
+                                    onclosealert={handleCloseAlert}
+                                >
+                                    The fields available in "Fields to Mask" and
+                                    "Fields to Empty" are mutually exclusive
+                                </c-data-clean-alert-message>
+                            </div>
+                        </template>
+                    </span>
+                    <p class="slds-p-left_x-large">
+                        <c-data-clean-searchable-lightning-dual-listbox
+                            all-options={fieldOptions}
+                            selected-values={selectedFieldValues}
+                            is-loading={spinners.isFieldSelectorDualListBoxLoading}
+                        ></c-data-clean-searchable-lightning-dual-listbox>
+                    </p>
+                    <span slot="footer">
+                        <div
+                            class="slds-align_absolute-center"
+                            style="height: 3rem"
+                        >
+                            <lightning-layout
+                                horizontal-align="center"
+                                vertical-align="center"
+                            >
+                                <lightning-layout-item padding="around-small">
+                                    <lightning-button
+                                        label="Cancel"
+                                        title="Cancel"
+                                        variant="brand-outline"
+                                        onclick={handleCancelFieldsSelectorModal}
+                                    ></lightning-button
+                                ></lightning-layout-item>
+                                <lightning-layout-item padding="around-small">
+                                    <lightning-button
+                                        label="Save"
+                                        title="Save"
+                                        variant="brand"
+                                        onclick={handleSaveFieldsSelectorModal}
+                                    ></lightning-button>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </div>
+                    </span>
+                </c-data-clean-modal>
+            </template>
+
+            <!-- Spinner (Full) -->
+            <template if:true={spinners.full}>
+                <div>
+                    <lightning-spinner
+                        alternative-text="Loading"
+                        size="medium"
+                        variant="brand"
+                    ></lightning-spinner>
+                </div>
+            </template>
+        </span>
+
+        <!-- Footer -->
+        <span slot="footer">
+            <!-- Fotter Buttons -->
+            <div class="slds-align_absolute-center" style="height: 3rem">
+                <lightning-layout
+                    horizontal-align="center"
+                    vertical-align="center"
+                >
+                    <template if:true={isFirstStep}>
+                        <lightning-layout-item padding="around-small">
+                            <lightning-button
+                                label="Cancel"
+                                title="Cancel"
+                                variant="brand-outline"
+                                onclick={handleCancel}
+                            ></lightning-button
+                        ></lightning-layout-item>
+                    </template>
+                    <template if:false={isFirstStep}>
+                        <lightning-layout-item padding="around-small">
+                            <lightning-button
+                                label="Previous"
+                                title="Previous"
+                                variant="brand-outline"
+                                onclick={handlePrevious}
+                            ></lightning-button
+                        ></lightning-layout-item>
+                    </template>
+                    <template if:false={isFinalStep}>
+                        <lightning-layout-item padding="around-small">
+                            <lightning-button
+                                label="Next"
+                                title="Next"
+                                variant="brand"
+                                onclick={handleNext}
+                            ></lightning-button>
+                        </lightning-layout-item>
+                    </template>
+                    <template if:true={isFinalStep}>
+                        <lightning-layout-item padding="around-small">
+                            <lightning-button
+                                label="Save"
+                                title="Save"
+                                variant="brand"
+                                onclick={handleSave}
+                            ></lightning-button>
+                        </lightning-layout-item>
+                    </template>
+                </lightning-layout>
+            </div>
+
+            <!-- Progress Indicator -->
+            <lightning-progress-indicator
+                current-step={progressIndicatorCurrentStep}
+            >
+                <template
+                    for:each={progressIndiacatorSteps}
+                    for:item="progressIndiacatorStep"
+                >
+                    <lightning-progress-step
+                        label={progressIndiacatorStep.label}
+                        value={progressIndiacatorStep.value}
+                        key={progressIndiacatorStep.value}
+                        onstepblur={handleStepBlur}
+                    ></lightning-progress-step>
+                </template>
+            </lightning-progress-indicator>
+        </span>
+    </c-data-clean-card>
+</template>

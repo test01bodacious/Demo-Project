@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Match_Object_Field_Length__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Match the object&apos;s field length and create masked data of that length</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Match the object&apos;s field length and create masked data of that length</inlineHelpText>
+    <label>Match Object Field Length</label>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

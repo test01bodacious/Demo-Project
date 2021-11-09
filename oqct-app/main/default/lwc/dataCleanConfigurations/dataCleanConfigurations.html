@@ -1,0 +1,277 @@
+<!--
+  @description       : NA
+  @author            : Krrish Joy
+  @group             : OQCT Limited
+  @last modified on  : 2021-02-18
+  @last modified by  : Krrish Joy
+  Modifications Log 
+  Ver   Date         Author         Modification
+  1.0   2020-11-16   Krrish Joy   Initial Version
+-->
+<template>
+    <template if:true={isCreateOrEdit}>
+        <c-data-clean-configuration-create-edit
+            configuration-data={configurationData}
+            onconfigurationsave={handleConfigurationSave}
+            onconfigurationcancel={handleConfigurationCancel}
+        ></c-data-clean-configuration-create-edit>
+    </template>
+
+    <template if:false={isCreateOrEdit}>
+        <template if:true={alerts.deleteBatchStart}>
+            <div class="slds-m-bottom_small">
+                <c-data-clean-alert-message
+                    type="success"
+                    data-id="deleteBatchStart"
+                    onclosealert={handleCloseAlert}
+                >
+                    The deletion process has started. You'll be emailed when the
+                    process is completed.
+                </c-data-clean-alert-message>
+            </div>
+        </template>
+        <template if:true={isDataCleanConfigurationData}>
+            <c-data-clean-card>
+                <p slot="title">{cardTitle}</p>
+                <span>
+                    <div class="slds-p-bottom_large">
+                        <lightning-breadcrumbs>
+                            <template for:each={breadcrumbs} for:item="crumbs">
+                                <lightning-breadcrumb
+                                    key={crumbs.id}
+                                    label={crumbs.label}
+                                    name={crumbs.name}
+                                    onclick={handleNavigateFromBreadcrumb}
+                                >
+                                </lightning-breadcrumb>
+                            </template>
+                        </lightning-breadcrumbs>
+                    </div>
+                    <template if:true={showDcConfigurations}>
+                        <c-data-clean-datatable-client-side
+                            data-id="dcConfigTable"
+                            key-field="id"
+                            table-data={dataCleanConfigurationData}
+                            columns={dataCleanConfigurationColumns}
+                            records-per-page={recordsPerPage}
+                            onrowselection={handleRowSelection}
+                            onnavigationlinkclick={handleNavigationLinkClick}
+                            onrowaction={handleRowAction}
+                            ontogglechange={handleToggleChange}
+                        ></c-data-clean-datatable-client-side>
+                    </template>
+                    <template if:true={showDataCleans}>
+                        <template if:true={isDataCleanData}>
+                            <c-data-clean-datatable-client-side
+                                data-id="dataCleanTable"
+                                key-field="id"
+                                table-data={dataCleanData}
+                                columns={dataCleanColumns}
+                                records-per-page={recordsPerPage}
+                                onrowselection={handleRowSelection}
+                                onnavigationlinkclick={handleNavigationLinkClick}
+                            ></c-data-clean-datatable-client-side>
+                        </template>
+                        <template if:false={isDataCleanData}>
+                            <div class="listViewContainer">
+                                <div
+                                    class="slds-p-around_medium"
+                                    style="height: 100px"
+                                >
+                                    <div
+                                        class="slds-box slds-align_absolute-center"
+                                    >
+                                        <c-data-clean-alert-message
+                                            hide-close-button={hideCloseButtonOnNoData}
+                                        >
+                                            {noDataMessage}
+                                        </c-data-clean-alert-message>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </template>
+                    <template if:true={isLoading}>
+                        <div class="listViewContainer">
+                            <lightning-spinner
+                                alternative-text="Loading"
+                                variant="brand"
+                            ></lightning-spinner>
+                        </div>
+                    </template>
+                </span>
+                <span slot="actions">
+                    <lightning-button
+                        label="New"
+                        title="New"
+                        variant="brand-outline"
+                        onclick={handleNewClick}
+                    ></lightning-button>
+                    <template if:true={showDeleteAction}>
+                        <lightning-button
+                            class="slds-p-left_medium"
+                            label="Delete"
+                            title="Delete"
+                            variant="destructive"
+                            icon-name="utility:delete"
+                            icon-position="right"
+                            onclick={handleDeleteClick}
+                        ></lightning-button>
+                    </template>
+                    <template if:true={showBackAction}>
+                        <lightning-button
+                            class="slds-p-left_medium"
+                            label="Back"
+                            title="Back"
+                            variant="brand-outline"
+                            onclick={handleBackClick}
+                        ></lightning-button>
+                    </template>
+                    <lightning-button
+                        class="slds-p-left_medium"
+                        label={filterButtonName}
+                        title={filterButtonName}
+                        variant="brand-outline"
+                        icon-name="utility:filterList"
+                        icon-position="right"
+                        onclick={handleFilterClick}
+                    ></lightning-button>
+                    <lightning-button
+                        class="slds-p-left_medium"
+                        label="Export"
+                        title="Export"
+                        variant="brand-outline"
+                        onclick={handleExportClick}
+                    ></lightning-button>
+                    <lightning-button
+                        class="slds-p-left_medium"
+                        label="Refresh"
+                        title="Refresh"
+                        variant="brand-outline"
+                        icon-name="utility:refresh"
+                        icon-position="right"
+                        onclick={handleRefreshClick}
+                    ></lightning-button>
+                </span>
+            </c-data-clean-card>
+
+            <c-data-clean-confirmation-prompt
+                data-id="deleteConfirmation"
+                type="error-prompt"
+                prompt-heading="Delete Data Clean Configurations"
+                prompt-data={selectedRows}
+                show-confirm-button-panel
+                onconfirm={handleConfirmDelete}
+            >
+                <span>
+                    <div class="slds-m-bottom_small">
+                        <c-data-clean-alert-message
+                            type="warning"
+                            data-id="dcConfigDeletion"
+                            hide-close-button
+                        >
+                            Only those DC-Configurations which do not have any
+                            results associated will be deleted.
+                        </c-data-clean-alert-message>
+                    </div>
+                    If you delete Data Clean Configurations, all associated Data
+                    Clean Records will be deleted. Are you sure you want to
+                    delete selected Data Clean Configurtations?
+                </span>
+            </c-data-clean-confirmation-prompt>
+
+            <c-data-clean-modal
+                header="DC Configuration"
+                data-id="previewModal"
+            >
+                <p class="slds-p-left_x-large">Content Here</p>
+                <span slot="footer">
+                    <div
+                        class="slds-align_absolute-center"
+                        style="height: 3rem"
+                    >
+                        <lightning-layout
+                            horizontal-align="center"
+                            vertical-align="center"
+                        >
+                            <lightning-layout-item padding="around-small">
+                                <lightning-button
+                                    label="Close"
+                                    title="Close"
+                                    variant="brand-outline"
+                                    onclick={handleCloseClickOnPreviewModal}
+                                ></lightning-button
+                            ></lightning-layout-item>
+                        </lightning-layout>
+                    </div>
+                </span>
+            </c-data-clean-modal>
+        </template>
+
+        <c-data-clean-filter-modal
+            data-id="filterModal"
+            filters={filters}
+            filter-columns={filterColumns}
+            onsave={handleSaveFilter}
+        >
+        </c-data-clean-filter-modal>
+
+        <template if:false={isDataCleanConfigurationData}>
+            <div class="listViewContainer">
+                <template if:true={isLoading}>
+                    <c-data-clean-stencil
+                        iterations="4"
+                        columns="4"
+                    ></c-data-clean-stencil>
+                </template>
+                <template if:false={isLoading}>
+                    <c-data-clean-card>
+                        <p slot="title">Data Clean Configurations</p>
+                        <span>
+                            <div
+                                class="slds-p-around_medium"
+                                style="height: 100px"
+                            >
+                                <div
+                                    class="slds-box slds-align_absolute-center"
+                                >
+                                    <c-data-clean-alert-message
+                                        hide-close-button={hideCloseButtonOnNoData}
+                                    >
+                                        {noDataMessage}
+                                    </c-data-clean-alert-message>
+                                </div>
+                            </div>
+                        </span>
+                        <span slot="actions">
+                            <lightning-button
+                                label="New"
+                                title="New"
+                                variant="brand-outline"
+                                onclick={handleNewClick}
+                            ></lightning-button>
+                            <lightning-button
+                                class="slds-p-left_medium"
+                                label={filterButtonName}
+                                title={filterButtonName}
+                                variant="brand-outline"
+                                icon-name="utility:filterList"
+                                icon-position="right"
+                                onclick={handleFilterClick}
+                            ></lightning-button>
+                            <lightning-button
+                                class="slds-p-left_medium"
+                                label="Refresh"
+                                title="Refresh"
+                                variant="brand-outline"
+                                icon-name="utility:refresh"
+                                icon-position="right"
+                                onclick={handleRefreshClick}
+                            ></lightning-button>
+                        </span>
+                    </c-data-clean-card>
+                </template>
+            </div>
+        </template>
+    </template>
+</template>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Disable_Rollback_Button__c</fullName>
+    <deprecated>false</deprecated>
+    <description>If true, the rollback button on DC-Configurations will be disabled</description>
+    <externalId>false</externalId>
+    <formula>!AND(
+    OR(
+        CONTAINS(TEXT(Data_Clean_Action__c),&apos;Rollback&apos;), CONTAINS(TEXT(Data_Clean_Action__c),&apos;Archive&apos;)
+    ),
+    Total_Backup_files__c &gt; 0
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>If true, the rollback button on DC-Configurations will be disabled</inlineHelpText>
+    <label>Disable Rollback Button</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

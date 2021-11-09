@@ -1,0 +1,10 @@
+.listViewContainer {
+    display: inline-block;
+    width: 100%;
+    vertical-align: middle;
+}
+
+.my-breadcrumbs {
+    --sds-c-breadcrumbs-spacing-inline-end: 20px;
+    --sds-c-breadcrumbs-spacing-inline-start: 30px;
+}

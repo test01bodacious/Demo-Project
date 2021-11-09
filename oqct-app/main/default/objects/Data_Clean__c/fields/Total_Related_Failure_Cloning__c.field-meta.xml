@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Related_Failure_Cloning__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The total number of child records associated with the Master object corresponding to Data Clean record which failed the cloning process</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The total number of child records associated with the Master object corresponding to Data Clean record which failed the cloning process</inlineHelpText>
+    <label>Total Related Failure (Cloning)</label>
+    <summarizedField>Data_Clean_Related_Result__c.Total_Related_Failure_Cloning__c</summarizedField>
+    <summaryForeignKey>Data_Clean_Related_Result__c.Data_Clean__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

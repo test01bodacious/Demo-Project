@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Related_Objects__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The total number of Related Objects attached to the Configuration</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The total number of Related Objects attached to the Configuration</inlineHelpText>
+    <label>Total Related Objects</label>
+    <summaryForeignKey>Data_Clean_Related_Result__c.Data_Clean__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

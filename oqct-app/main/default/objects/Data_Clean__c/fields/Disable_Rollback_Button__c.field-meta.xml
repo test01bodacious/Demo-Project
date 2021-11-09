@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Disable_Rollback_Button__c</fullName>
+    <deprecated>false</deprecated>
+    <description>If true, the rollback button on Data Cleans will be disabled</description>
+    <externalId>false</externalId>
+    <formula>!AND(
+    OR(
+        CONTAINS(TEXT(DC_Configuration__r.Data_Clean_Action__c), &apos;Rollback&apos;),
+        CONTAINS(TEXT(DC_Configuration__r.Data_Clean_Action__c), &apos;Archive&apos;)
+    ),
+    OR(
+        Total_Master_Success_Masking__c + Total_Related_Success_Masking__c &gt; 0,
+        Total_Master_Success_Deletion__c + Total_Related_Success_Deletion__c &gt; 0,
+        Total_Master_Success_Archive__c + Total_Related_Success_Archive__c &gt; 0,
+        Total_Master_Success_Cloning__c + Total_Related_Success_Cloning__c &gt; 0
+    )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>If true, the rollback button on Data Cleans will be disabled</inlineHelpText>
+    <label>Disable Rollback Button</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Masking Only</fullName>
+        <default>true</default>
+        <label>Masking Only</label>
+    </customValue>
+    <customValue>
+        <fullName>Masking + Deletion</fullName>
+        <default>false</default>
+        <label>Masking + Deletion</label>
+    </customValue>
+    <customValue>
+        <fullName>Masking + Rollback</fullName>
+        <default>false</default>
+        <label>Masking + Rollback</label>
+    </customValue>
+    <customValue>
+        <fullName>Masking + Rollback + Deletion</fullName>
+        <default>false</default>
+        <label>Masking + Rollback + Deletion</label>
+    </customValue>
+    <customValue>
+        <fullName>Deletion Only</fullName>
+        <default>false</default>
+        <label>Deletion Only</label>
+    </customValue>
+    <customValue>
+        <fullName>Deletion + Rollback</fullName>
+        <default>false</default>
+        <label>Deletion + Rollback</label>
+    </customValue>
+    <customValue>
+        <fullName>Archive + Deletion</fullName>
+        <default>false</default>
+        <label>Archive + Deletion</label>
+    </customValue>
+    <customValue>
+        <fullName>Archive + Rollback</fullName>
+        <default>false</default>
+        <label>Archive + Rollback</label>
+    </customValue>
+    <customValue>
+        <fullName>Cloning</fullName>
+        <default>false</default>
+        <label>Cloning</label>
+    </customValue>
+    <description>The action type available for Data Clean App</description>
+    <masterLabel>Data Clean Actions</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

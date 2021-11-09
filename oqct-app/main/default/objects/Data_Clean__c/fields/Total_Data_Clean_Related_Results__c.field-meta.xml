@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Data_Clean_Related_Results__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The total number of ‘Data Clean Related Result’ records associated with the Data Clean record</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The total number of ‘Data Clean Related Result’ records associated with the Data Clean record</inlineHelpText>
+    <label>Total Data Clean Related Results</label>
+    <summaryForeignKey>Data_Clean_Related_Result__c.Data_Clean__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

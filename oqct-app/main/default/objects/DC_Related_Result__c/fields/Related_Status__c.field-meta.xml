@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Related_Status__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The status of all the records of [Related Object Name] which are associated with the parent Master object. The picklist takes its values from the Global Picklist ‘Data Clean Treatment Status’</description>
+    <externalId>false</externalId>
+    <formula>IF(
+    !Is_Related_Job_Completed__c,
+    &apos;Pending&apos;,
+    IF(
+        AND(Total_Related_Success__c &gt; 0, Total_Related_Failure__c = 0),
+        &apos;Success&apos;,
+        IF(
+            AND(Total_Related_Success__c = 0, Total_Related_Failure__c &gt; 0),
+            &apos;Failed&apos;,
+            IF(
+                AND(Total_Related_Success__c &gt; 0, Total_Related_Failure__c &gt; 0),
+                &apos;Partial Success&apos;,
+                IF(
+                    AND(Total_Related_Success__c = 0, Total_Related_Failure__c = 0),
+                    &apos;No Records Found&apos;,
+                    null
+                )
+            )
+        )
+    )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>The status of all the records of [Related Object Name] which are associated with the parent Master object. The picklist takes its values from the Global Picklist ‘Data Clean Treatment Status’</inlineHelpText>
+    <label>Related Status</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

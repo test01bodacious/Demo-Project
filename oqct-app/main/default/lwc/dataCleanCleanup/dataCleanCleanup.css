@@ -1,0 +1,25 @@
+.listViewContainer {
+    display: inline-block;
+    width: 100%;
+    vertical-align: middle;
+}
+
+.my-breadcrumbs {
+    --sds-c-breadcrumbs-spacing-inline-end: 20px;
+    --sds-c-breadcrumbs-spacing-inline-start: 30px;
+}
+
+.less-destructive {
+    --sds-c-button-destructive-color-background: #edad53;
+    --sds-c-button-destructive-color-border: #edad53;
+    --sds-c-button-destructive-color-background-hover: #a64514;
+    --sds-c-button-destructive-color-border-hover: #edad53;
+    --sds-c-button-destructive-color-background-active: #873f00;
+    --sds-c-button-destructive-color-border-active: #873f00;
+    --sds-c-button-text-destructive-color-background: white;
+    --sds-c-button-text-destructive-color-border: #dddbda;
+    --sds-c-button-text-destructive-color-background-hover: #f4f6f9;
+    --sds-c-button-text-destructive-color-border-hover: #dddbda;
+    --sds-c-button-text-destructive-color-background-active: #eef1f6;
+    --sds-c-button-text-destructive-color-border-active: #dddbda;
+}

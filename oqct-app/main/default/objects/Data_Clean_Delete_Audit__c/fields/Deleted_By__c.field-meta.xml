@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Deleted_By__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <description>The user who deleted the record</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The user who deleted the record</inlineHelpText>
+    <label>Deleted By</label>
+    <referenceTo>User</referenceTo>
+    <relationshipName>Data_Clean_Delete_Audits</relationshipName>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

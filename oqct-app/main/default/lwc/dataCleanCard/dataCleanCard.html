@@ -1,0 +1,55 @@
+<!--
+  @description       : NA
+  @author            : Krrish Joy
+  @group             : OQCT Limited
+  @last modified on  : 2021-02-18
+  @last modified by  : Krrish Joy
+  Modifications Log 
+  Ver   Date         Author         Modification
+  1.0   2020-11-10   Krrish Joy   Initial Version
+-->
+
+<!-- How to Use -->
+
+<!-- <c-data-clean-card>
+    <p slot="title">Title</p>
+    <span slot="actions">
+        <lightning-button
+            label="New"
+            variant="brand-outline"
+        ></lightning-button>
+    </span>
+    <span> Body </span>
+    <span slot="footer"> Footer </span>
+</c-data-clean-card> -->
+
+<template>
+    <article class="slds-card">
+        <template if:false={hideHeader}>
+            <div class="slds-card__header slds-grid">
+                <header
+                    class="slds-media slds-media_center slds-has-flexi-truncate dacl-card-header slds-p-horizontal_medium slds-p-vertical_x-small"
+                >
+                    <div class="slds-media__body">
+                        <h2 class={headingClass}>
+                            <span class="slds-text-heading_small slds-truncate">
+                                <slot name="title"> </slot>
+                            </span>
+                        </h2>
+                    </div>
+                    <div class="slds-no-flex">
+                        <slot name="actions"> </slot>
+                    </div>
+                </header>
+            </div>
+        </template>
+        <div class="slds-card__body slds-p-horizontal_large">
+            <slot> </slot>
+        </div>
+        <template if:false={hideFooter}>
+            <div class="slds-card__footer">
+                <slot name="footer"> </slot>
+            </div>
+        </template>
+    </article>
+</template>

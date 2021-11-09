@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Record_Type_Name__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The name of the record type on the object represented by master/related object for which the fields needs to be masked</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The name of the record type on the object represented by master/related object for which the fields needs to be masked</inlineHelpText>
+    <label>Record Type Name</label>
+    <length>255</length>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,22 @@
+<template>
+    <lightning-layout multiple-rows="true">
+        <template for:each={getIterationsForList} for:item="iteration" >
+            <lightning-layout-item key={iteration.key} size="12" small-device-size={viewPortSize} medium-device-size={viewPortSize} large-device-size={viewPortSize}>
+                <div class={getChildClass}>
+                    <!-- Design Skeleton -->
+                    <div class="placeholder activity">
+                        <div class="placeholder detail">
+                            <div class="left-column">
+                                <div class="field">
+                                    <template for:each={iteration.lines} for:item="line">
+                                        <div key={line.key} class={line.class}></div>
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+            </lightning-layout-item>
+        </template>
+    </lightning-layout>
+</template>

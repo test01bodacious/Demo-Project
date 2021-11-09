@@ -1,23 +1,23 @@
-# About OQCT
+# About XYZ
 
-OQCT is a Software Solution Development company based in the UK focusing on customisation and extension of Salesforce.
-The OQCT team have a background of working on large multinational CRM systems.
+XYZ is a Software Solution Development company based in the UK focusing on customisation and extension of Salesforce.
+The xyz team have a background of working on large multinational CRM systems.
 
-Since 2018 OQCT has helped solve the data problems of large enterprises, Fortune 500 companies and small businesses across the UK.
+Since 2018 XYZ has helped solve the data problems of large enterprises, Fortune 500 companies and small businesses across the UK.
 
 Our complete focus is ensuring our customers' continued success with our products and, by extension, their CRM and marketing automation initiatives
 
 Website:
-https://www.oqct.com <br/>
+https://www.xyz.com <br/>
 Email:
-sales@oqct.com<br/>
+sales@xyz.com<br/>
 Phone:
-+44 20 8004 4401
++91 9694060398
 <br/><br/>
 
 ## Data Clean
 
-<a href="https://githubsfdeploy.herokuapp.com?owner=OQCT-Limited&repo=Data-Clean&ref=master">
+<a href="https://githubsfdeploy.herokuapp.com?owner=XYZ-Limited&repo=Data-Clean&ref=master">
   <img alt="Deploy to Salesforce"
        src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">
 </a>
@@ -39,5 +39,5 @@ It supports the following features:
 * Designed for Non-Technical user
 * Multi Language Support
 
-For more information, visit our website https://www.oqct.com/ <br/>
-You can also reach out to us at support@oqct.com
+For more information, visit our website https://www.xyz.com/ <br/>
+You can also reach out to us at support@xyz.com
